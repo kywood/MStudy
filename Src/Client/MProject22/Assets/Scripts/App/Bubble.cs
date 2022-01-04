@@ -1,9 +1,12 @@
+using RotSlot;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
+
+    private E_BUBBLE_TYPE mBubbleType = E_BUBBLE_TYPE.NONE;
     public void Awake()
     {
         transform.localScale = new Vector3(Defines.G_SLOT_RADIUS * 2,
@@ -13,6 +16,23 @@ public class Bubble : MonoBehaviour
     public void Start()
     {
         
+    }
+
+    public void SetBubbleType( E_BUBBLE_TYPE bubble_type )
+    {
+        mBubbleType = bubble_type;
+
+        SpriteRenderer sp = GetComponent<SpriteRenderer>();
+        sp.color = ConstData.GetBubbleProperty(bubble_type).mColor;
+    }
+        
+    public void SetVisible(bool value)
+    {
+        gameObject.SetActive(value);
+        if(value )
+        {
+            SetBubbleType(ConstData.GetNextBubbleType());
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

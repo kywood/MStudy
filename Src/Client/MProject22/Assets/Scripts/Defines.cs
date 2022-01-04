@@ -1,3 +1,4 @@
+using RotSlot;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,6 +6,8 @@ using UnityEngine;
 
 public class Defines 
 {
+
+
     public enum E_SCENES
     {
         LOGO,
@@ -30,5 +33,7 @@ public class Defines
     public const int G_BUBBLE_COL_COUNT = 8;
 
     public const float G_SLOT_RADIUS = 0.3f;
+
+    
 
 }

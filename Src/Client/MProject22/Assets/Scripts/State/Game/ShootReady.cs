@@ -14,7 +14,7 @@ public class ShootReady : State
 
     public override void OnEnter()
     {
-        //Debug.Log("ShootReady OnEnter");
+        Debug.Log("ShootReady OnEnter");
 
         Target = AppManager.Instance.Pick.GetComponent<Pick>().Target;
         ShootBody = AppManager.Instance.Pick.GetComponent<Pick>().ShootBody;
@@ -34,6 +34,7 @@ public class ShootReady : State
     private void Init()
     {
         bMousePress = false;
+        
 //        RbBubble = Bubble.GetComponent<Rigidbody2D>();
     }
 

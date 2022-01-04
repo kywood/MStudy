@@ -29,7 +29,7 @@ public class CSSlot : MonoBehaviour
 
             Debug.Log(collision.name + " " + mColsSlot.GetID() + " " + mSlot.GetID());
 
-            cBubble bb = cBubbleHelper.Factory(E_BUBBLE_TYPE.BLUE);
+            cBubble bb = cBubbleHelper.Factory(E_BUBBLE_TYPE.GREEN);
 
             mSlot.Set(bb);
 
@@ -45,7 +45,7 @@ public class CSSlot : MonoBehaviour
 
             SpriteRenderer sr = cb.GetComponent<SpriteRenderer>();
 
-            sr.color = new Color(0, 0, 1);
+            sr.color = ConstData.GetBubbleProperty(E_BUBBLE_TYPE.GREEN).mColor;
 
             AppManager.Instance.GetStateManager().SetGameState(StateManager.E_GAME_STATE.RUN_RESULT);
         }

@@ -12,6 +12,7 @@ namespace RotSlot
         BLUE = 2,
         YELLOW = 3,
         GREEN = 4,
+        PURPLE = 5,
         MAX
     }
 
@@ -26,6 +27,8 @@ namespace RotSlot
             else if (type == E_BUBBLE_TYPE.YELLOW)
                 return new cBubbleYellow();
             else if (type == E_BUBBLE_TYPE.GREEN)
+                return new cBubbleGreen();
+            else if (type == E_BUBBLE_TYPE.PURPLE)
                 return new cBubbleGreen();
 
             return null;
@@ -91,6 +94,14 @@ namespace RotSlot
         public cBubbleGreen()
         {
             SetBubbleType(E_BUBBLE_TYPE.GREEN);
+        }
+    }
+
+    public class cBubblePurple : cBubble
+    {
+        public cBubblePurple()
+        {
+            SetBubbleType(E_BUBBLE_TYPE.PURPLE);
         }
     }
 
