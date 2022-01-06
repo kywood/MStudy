@@ -8,7 +8,7 @@ public class Run : State
     public override void OnEnter()
     {
         //Debug.Log("Run OnEnter");
-        AppManager.Instance.BubbleManager.GetComponent<BubbleManager>().SetVisible(true);
+        
     }
 
     public override void OnLeave()
@@ -18,8 +18,8 @@ public class Run : State
 
     }
 
-    public override void OnUpdate()
-    {
+    //public override void OnUpdate()
+    //{
 
-    }
+    //}
 }

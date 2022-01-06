@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace RotSlot
 {
@@ -29,7 +30,7 @@ namespace RotSlot
             else if (type == E_BUBBLE_TYPE.GREEN)
                 return new cBubbleGreen();
             else if (type == E_BUBBLE_TYPE.PURPLE)
-                return new cBubbleGreen();
+                return new cBubblePurple();
 
             return null;
         }
@@ -41,6 +42,8 @@ namespace RotSlot
         protected void SetBubbleType (E_BUBBLE_TYPE type)
         {
             mType = type;
+
+            Debug.Log("===" + mType + " ========== ");
         }
 
         public override string ToString()

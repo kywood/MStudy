@@ -23,6 +23,8 @@ public class ShootReady : State
         Bubble = AppManager.Instance.BubbleManager.GetComponent<BubbleManager>().Bubble;
         RbBubble = Bubble.GetComponent<Rigidbody2D>();
 
+        AppManager.Instance.BubbleManager.GetComponent<BubbleManager>().SetVisible(true);
+
         Init();
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,8 +34,7 @@ public class StateManager : MonoBehaviour
     {
         
     }
-
-    public void SetGameState(E_GAME_STATE  gameState )
+    public void SetGameState(E_GAME_STATE gameState , Action<State> act = null )
     {
         if (mGameState == gameState)
             return;
@@ -42,19 +42,44 @@ public class StateManager : MonoBehaviour
         if (mGameState == E_GAME_STATE.NONE)
         {
             mGameState = gameState;
-            mStateMap[gameState].OnEnter();
+            mStateMap[gameState].OnEnter(act);
         }
         else
         {
             mStateMap[mGameState].OnLeave();
             mGameState = gameState;
-            mStateMap[gameState].OnEnter();
+            mStateMap[gameState].OnEnter(act);
         }
     }
+
+
+
+    //public void SetGameState(E_GAME_STATE  gameState )
+    //{
+    //    if (mGameState == gameState)
+    //        return;
+
+    //    if (mGameState == E_GAME_STATE.NONE)
+    //    {
+    //        mGameState = gameState;
+    //        mStateMap[gameState].OnEnter();
+    //    }
+    //    else
+    //    {
+    //        mStateMap[mGameState].OnLeave();
+    //        mGameState = gameState;
+    //        mStateMap[gameState].OnEnter();
+    //    }
+    //}
 
     public E_GAME_STATE GetGameState()
     {
         return mGameState;
+    }
+
+    public State GetGameStateValue()
+    {
+        return mStateMap[mGameState];
     }
 
     public bool IsGameState(E_GAME_STATE game_state  )

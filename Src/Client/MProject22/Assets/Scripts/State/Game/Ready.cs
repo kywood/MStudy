@@ -63,7 +63,7 @@ public class Ready : State
     //    //walls.WR.transform.position = new Vector3(firstEndX + (walls.WR.GetComponent<BoxCollider2D>().size.x / 2), walls.WR.transform.position.y, 0);
 
     //}
-
+    
     public override void OnEnter()
     {
         //Debug.Log("Ready OnEnter");

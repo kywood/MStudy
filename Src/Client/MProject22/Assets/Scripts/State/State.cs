@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,16 @@ public class State
 
     }
 
+    public virtual void OnEnter( Action<State> act )
+    {
+        if( act != null )
+        {
+            act.Invoke(this);
+        }
+
+        OnEnter();
+    }
+
     public virtual void OnLeave()
     {
 
@@ -21,5 +32,9 @@ public class State
 
     }
 
+    //public virtual void SetEnterParam( List<Object> param )
+    //{
+
+    //}
 
 }

@@ -41,8 +41,13 @@ public class Bubble : MonoBehaviour
     public void SetVisible(bool value)
     {
         gameObject.SetActive(value);
-        if(value )
+        if( value == true )
         {
+            Pick pick =AppManager.Instance.Pick.GetComponent<Pick>();
+
+            transform.position = pick.ShootBody.transform.position;
+
+
             SetBubbleType(ConstData.GetNextBubbleType());
         }
     }
