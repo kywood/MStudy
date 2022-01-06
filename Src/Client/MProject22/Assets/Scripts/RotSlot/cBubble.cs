@@ -48,7 +48,7 @@ namespace RotSlot
             return mType.ToString();
         }
 
-        private E_BUBBLE_TYPE GetBubbleType()
+        public E_BUBBLE_TYPE GetBubbleType()
         {
             return mType;
         }

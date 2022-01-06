@@ -129,6 +129,22 @@ public partial class Util
         return x - d <= y && y <= x + d;
     }
 
+    public static Color NewColor( int hex_color )
+    {
+        float a = 1.0f;
+        float r = 1.0f;
+        float g = 1.0f;
+        float b = 1.0f;
+
+        //FFDB00
+
+        r = (float)( (hex_color >> 16) & 0x0000FF ) / 255.0f;  // 00 00 FF
+        g = (float)((hex_color >> 8) & 0x0000FF) / 255.0f;   // 00 FF DB and 00 00 FF      -->  FF & F0  =  F0
+        b = (float)(hex_color & 0x0000FF) / 255.0f;   // 00 FF DB and 00 00 FF      -->  FF & F0  =  F0
+
+        return new Color(r, g, b, a);
+    }
+
     public static bool IsProbability100(float percent)
     {
         float rnd = Rand(0.0f, 100.0f);

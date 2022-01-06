@@ -18,12 +18,24 @@ public class Bubble : MonoBehaviour
         
     }
 
+    public E_BUBBLE_TYPE GetBubbleType()
+    {
+        return mBubbleType;
+    }
+
     public void SetBubbleType( E_BUBBLE_TYPE bubble_type )
     {
         mBubbleType = bubble_type;
 
         SpriteRenderer sp = GetComponent<SpriteRenderer>();
+        Color c = ConstData.GetBubbleProperty(bubble_type).mColor;
         sp.color = ConstData.GetBubbleProperty(bubble_type).mColor;
+
+
+        Debug.Log(bubble_type);
+        Debug.Log(c.ToString());
+
+
     }
         
     public void SetVisible(bool value)

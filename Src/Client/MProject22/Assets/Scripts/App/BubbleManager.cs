@@ -18,9 +18,13 @@ public class BubbleManager : MonoBehaviour
         //Bubble.SetActive(visible);
         //Bubble bb = Bubble.GetComponent<Bubble>();
         //bb.SetBubbleType(ConstData.GetNextBubbleType());
+        //Bubble.GetComponent<Bubble>().SetVisible(visible);
+        GetBubble().SetVisible(visible);
+    }
 
-        Bubble.GetComponent<Bubble>().SetVisible(visible);
-
+    public Bubble GetBubble()
+    {
+        return Bubble.GetComponent<Bubble>();
     }
 
     public E_BUBBLE_TYPE GetNextBubbleType()

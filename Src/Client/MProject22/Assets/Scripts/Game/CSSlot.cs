@@ -25,11 +25,17 @@ public class CSSlot : MonoBehaviour
             mRotSlot.CheckStay( new cPoint<int>(mSlot.GetID() , mColsSlot.GetID()) ) 
             )
         {
-            AppManager.Instance.BubbleManager.GetComponent<BubbleManager>().SetVisible(false);
+            BubbleManager bubbleManager = AppManager.Instance.BubbleManager.GetComponent<BubbleManager>();
+
+            bubbleManager.SetVisible(false);
+
+            Bubble bubble = bubbleManager.GetBubble();
+
+            //AppManager.Instance.BubbleManager.GetComponent<BubbleManager>().SetVisible(false);
 
             Debug.Log(collision.name + " " + mColsSlot.GetID() + " " + mSlot.GetID());
 
-            cBubble bb = cBubbleHelper.Factory(E_BUBBLE_TYPE.GREEN);
+            cBubble bb = cBubbleHelper.Factory(bubble.GetBubbleType());
 
             mSlot.Set(bb);
 
@@ -39,13 +45,15 @@ public class CSSlot : MonoBehaviour
 
             CSBubble cb = BubbleGO.GetComponent<CSBubble>();
             cb.SetBubble(bb);
+
+
             cb.transform.localScale = new Vector3(Defines.G_SLOT_RADIUS * 2, Defines.G_SLOT_RADIUS * 2, 0.0f);
 
             cb.transform.position = this.transform.position;
 
-            SpriteRenderer sr = cb.GetComponent<SpriteRenderer>();
+            //SpriteRenderer sr = cb.GetComponent<SpriteRenderer>();
 
-            sr.color = ConstData.GetBubbleProperty(E_BUBBLE_TYPE.GREEN).mColor;
+            //sr.color = ConstData.GetBubbleProperty(E_BUBBLE_TYPE.GREEN).mColor;
 
             AppManager.Instance.GetStateManager().SetGameState(StateManager.E_GAME_STATE.RUN_RESULT);
         }
