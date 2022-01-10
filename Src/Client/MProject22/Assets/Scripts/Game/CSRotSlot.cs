@@ -10,6 +10,13 @@ public class CSRotSlot : MonoBehaviour
     public GameObject PreFabSlot;
     public GameObject PreFabColsSlot;
 
+    private cBubbleSlot mBubbleSlot;
+
+    //public cBubbleSlot GetBubbleSlot()
+    //{
+    //    return mBubbleSlot;
+    //}
+
     public void InitRotSlot()
     {
         int BubbleRowNums = Defines.G_BUBBLE_ROW_COUNT;
@@ -17,7 +24,7 @@ public class CSRotSlot : MonoBehaviour
 
 
         cBubbleSlot bs = new cBubbleSlot(BubbleRowNums , BubbleColsNums);
-        //int BubbleRowSNums = 7;
+        mBubbleSlot = bs;
 
         float startX = 0.0f;
         float startY = 0.0f;

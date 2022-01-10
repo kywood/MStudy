@@ -81,7 +81,7 @@ public class cBubbleSlot : cRotSlot<cBubble>{
     }
 
 
-    private void GetFindDropBubble()
+    private void GetFindDropBubble(List<cPoint<int>> out_drop)
     {
         cCalcQueue cq = new cCalcQueue();
         for (int i = 0; i < GetColsSlotCount(); i++)
@@ -111,10 +111,10 @@ public class cBubbleSlot : cRotSlot<cBubble>{
             {
                 cq.Add(new_pos);
             }
-        });
+        } , out_drop);
     }
 
-    private void QueueAct(cCalcQueue cq, Action<cCalcQueue, cBubble, cPoint<int>> act)
+    private void QueueAct(cCalcQueue cq, Action<cCalcQueue, cBubble, cPoint<int>> act , List<cPoint<int>> out_list = null )
     {
         while (!cq.IsComplete())
         {
@@ -135,7 +135,17 @@ public class cBubbleSlot : cRotSlot<cBubble>{
                 //act.Invoke(cq, stBubble, new_pos);
                 act.Invoke(cq, stBubble, new_pos);
             }
+
             Console.WriteLine("RESULT POS = {0} , {1}", calcTarget.x, calcTarget.y);
+
+            if( out_list != null )
+            {
+                out_list.Add(calcTarget);
+            }
+
+            //out_list != null ? out_list.Add(calcTarget) : 
+            //out_drop.Add(calcTarget);
+
             calcTarget.SetComplete();
         }
     }
@@ -161,14 +171,50 @@ public class cBubbleSlot : cRotSlot<cBubble>{
             }
 
         }
-
         return false;
     }
 
-    public void Pang(cPoint<int> pos)
+    //public void Pang(cPoint<int> pos)
+    //{
+    //    if (!ExistBubble(pos))
+    //        return;
+
+    //    cCalcQueue cq = new cCalcQueue();
+
+    //    cq.Add(pos);
+
+    //    QueueAct(cq,
+    //        (cq, stBubble, new_pos) => {
+
+    //            cBubble newbb = GetBubble(new_pos);
+    //            if (newbb != null)
+    //            {
+    //                if (stBubble.IsSameType(newbb))
+    //                {
+    //                    cq.Add(new_pos);
+    //                }
+    //            }
+    //        });
+
+    //    // null Setting
+    //    foreach (int key in cq.GetQueue().Keys)
+    //    {
+    //        if (cq.GetQueue()[key].calcState == E_CALC_STATE.COMPLETE)
+    //            SetItem(cq.GetQueue()[key]);
+    //    }
+
+    //    // 연결이 끊어진 구슬 떨구기 
+    //    GetFindDropBubble();
+    //}
+
+
+    public void Pang(cPoint<int> pos , List<cPoint<int> > out_pang , List<cPoint<int>> out_drop)
     {
         if (!ExistBubble(pos))
             return;
+
+        out_pang.Clear();
+        out_drop.Clear();
 
         cCalcQueue cq = new cCalcQueue();
 
@@ -191,12 +237,14 @@ public class cBubbleSlot : cRotSlot<cBubble>{
         foreach (int key in cq.GetQueue().Keys)
         {
             if (cq.GetQueue()[key].calcState == E_CALC_STATE.COMPLETE)
+            {
+                out_pang.Add(cq.GetQueue()[key]);
                 SetItem(cq.GetQueue()[key]);
+            }
         }
 
         // 연결이 끊어진 구슬 떨구기 
-
-        GetFindDropBubble();
+        GetFindDropBubble(out_drop);
 
         //int k = 0;
         //k = 100;

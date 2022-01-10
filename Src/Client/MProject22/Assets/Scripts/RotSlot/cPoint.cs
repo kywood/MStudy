@@ -28,5 +28,10 @@ namespace RotSlot
             set { _y = value; }
         }
 
+        public String ToString()
+        {
+            return "X = " + x + " Y = " + y;
+        }
+
     }
 }

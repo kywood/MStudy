@@ -1,3 +1,4 @@
+using RotSlot;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,6 +19,31 @@ public class RunResult : State
         //AppManager.Instance.BubbleManager.GetComponent<BubbleManager>().SetVisible(true);
         timer = 0.0f;
         waitingTime = 2;
+
+
+        List<cPoint<int>> out_pang = new List<cPoint<int>>();
+        List< cPoint<int>> out_drop = new List<cPoint<int>>();
+
+        mCsSlot.Pang(out_pang, out_drop);
+
+
+        Debug.Log(" =======  out_pang ============== ");
+        foreach ( cPoint<int> pos in out_pang)
+        {
+            Debug.Log(pos.ToString());
+        }
+
+        Debug.Log(" =======  out_drop ============== ");
+        foreach (cPoint<int> pos in out_drop)
+        {
+            Debug.Log(pos.ToString());
+        }
+
+        //    //AppManager.Instance.BubbleManager.GetComponent<BubbleManager>().SetVisible(false);
+        //Debug.Log(collision.name + " " + mColsSlot.GetID() + " " + mSlot.GetID());
+
+
+
     }
 
     public override void OnLeave()
