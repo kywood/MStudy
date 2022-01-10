@@ -1,0 +1,41 @@
+F:\project\PP\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.exe
+F:\project\PP\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.deps.json
+F:\project\PP\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.runtimeconfig.json
+F:\project\PP\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.runtimeconfig.dev.json
+F:\project\PP\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.dll
+F:\project\PP\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.pdb
+F:\project\PP\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.GeneratedMSBuildEditorConfig.editorconfig
+F:\project\PP\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.AssemblyInfoInputs.cache
+F:\project\PP\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.AssemblyInfo.cs
+F:\project\PP\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.csproj.CoreCompileInputs.cache
+F:\project\PP\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.dll
+F:\project\PP\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.pdb
+F:\project\PP\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.genruntimeconfig.cache
+F:\project\PP\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.csproj.AssemblyReference.cache
+F:\project_study\CS\CS_Minsu\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.exe
+F:\project_study\CS\CS_Minsu\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.deps.json
+F:\project_study\CS\CS_Minsu\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.runtimeconfig.json
+F:\project_study\CS\CS_Minsu\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.runtimeconfig.dev.json
+F:\project_study\CS\CS_Minsu\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.dll
+F:\project_study\CS\CS_Minsu\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.pdb
+F:\project_study\CS\CS_Minsu\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.csprojAssemblyReference.cache
+F:\project_study\CS\CS_Minsu\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.AssemblyInfoInputs.cache
+F:\project_study\CS\CS_Minsu\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.AssemblyInfo.cs
+F:\project_study\CS\CS_Minsu\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.csproj.CoreCompileInputs.cache
+F:\project_study\CS\CS_Minsu\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.dll
+F:\project_study\CS\CS_Minsu\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.pdb
+F:\project_study\CS\CS_Minsu\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.genruntimeconfig.cache
+C:\Users\My PC\Downloads\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.exe
+C:\Users\My PC\Downloads\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.deps.json
+C:\Users\My PC\Downloads\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.runtimeconfig.json
+C:\Users\My PC\Downloads\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.runtimeconfig.dev.json
+C:\Users\My PC\Downloads\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.dll
+C:\Users\My PC\Downloads\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.pdb
+C:\Users\My PC\Downloads\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.csproj.AssemblyReference.cache
+C:\Users\My PC\Downloads\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\My PC\Downloads\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.AssemblyInfoInputs.cache
+C:\Users\My PC\Downloads\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.AssemblyInfo.cs
+C:\Users\My PC\Downloads\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.csproj.CoreCompileInputs.cache
+C:\Users\My PC\Downloads\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.dll
+C:\Users\My PC\Downloads\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.pdb
+C:\Users\My PC\Downloads\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.genruntimeconfig.cache
