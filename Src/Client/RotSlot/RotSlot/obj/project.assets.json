@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\My PC\\Downloads\\RotSlot\\RotSlot\\RotSlot.csproj",
+      "projectUniqueName": "F:\\project\\MStudy\\Src\\Client\\RotSlot\\RotSlot\\RotSlot.csproj",
       "projectName": "RotSlot",
-      "projectPath": "C:\\Users\\My PC\\Downloads\\RotSlot\\RotSlot\\RotSlot.csproj",
+      "projectPath": "F:\\project\\MStudy\\Src\\Client\\RotSlot\\RotSlot\\RotSlot.csproj",
       "packagesPath": "C:\\Users\\My PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\My PC\\Downloads\\RotSlot\\RotSlot\\obj\\",
+      "outputPath": "F:\\project\\MStudy\\Src\\Client\\RotSlot\\RotSlot\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

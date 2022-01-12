@@ -98,7 +98,15 @@ namespace RotSlot
 
         public cSlot<T> GetSlotByIDX(int slot_idx)
         {
-            return mSlots[slot_idx];
+            try
+            {
+                return mSlots[slot_idx];
+            }
+            catch
+            {
+                return null;
+            }
+            
         }
 
         public cSlot<T> GetSlotByID(int slot_id)
@@ -190,13 +198,27 @@ namespace RotSlot
 
         protected cSlot<T> GetSlot(int x, int y)
         {
-            cColsSlot<T> colsSlot = mRotQueue.GetItemByIDX(y);
-            return colsSlot == null ? null : colsSlot.GetSlotByIDX(x);
+            return GetSlot(new cPoint<int>(x,y));
+            //cColsSlot<T> colsSlot = mRotQueue.GetItemByIDX(y);
+            //return colsSlot == null ? null : colsSlot.GetSlotByIDX(x);
         }
+
+
         protected cSlot<T> GetSlot(cPoint<int> point)
         {
             cColsSlot<T> colsSlot = GetColsSlot(point);// mRotQueue.GetItemByIDX(point.y);
-            return colsSlot == null ? null : colsSlot.GetSlotByIDX(point.x);
+
+            if (colsSlot == null)
+                return null;
+
+            cSlot<T> slot = colsSlot.GetSlotByIDX(point.x);
+
+            if (slot == null )
+            {
+                return null;
+            }
+
+            return slot;
         }
 
         public void SetItem(int x, int y, T item)
@@ -326,7 +348,7 @@ namespace RotSlot
         private void GetFindDropBubble()
         {
             cCalcQueue cq = new cCalcQueue();
-            for(int i = 0;  i < GetColsSlotCount() ; i++ )
+            for(int i = 1;  i < GetColsSlotCount() ; i++ )
             {
                 cColsSlot<cBubble> colsSlot = GetColsSlot(i);
                 for( int slotIdx = 0; slotIdx < colsSlot.GetCount() ; slotIdx++ )
@@ -379,7 +401,7 @@ namespace RotSlot
                     //act.Invoke(cq, stBubble, new_pos);
                     act.Invoke(cq, stBubble, new_pos);
                 }
-                Console.WriteLine("RESULT POS = {0} , {1}", calcTarget.x, calcTarget.y);
+                //Console.WriteLine("Chk POS = {0} , {1}", calcTarget.x, calcTarget.y);
                 calcTarget.SetComplete();
             }
         }
@@ -406,11 +428,14 @@ namespace RotSlot
                     }
                 } );
 
-            // null Setting
-            foreach (int key in cq.GetQueue().Keys)
+            if (cq.GetCalcStateCount(E_CALC_STATE.COMPLETE) >= 3)
             {
-                if (cq.GetQueue()[key].calcState == E_CALC_STATE.COMPLETE)
-                    SetItem(cq.GetQueue()[key]);
+                // null Setting
+                foreach (int key in cq.GetQueue().Keys)
+                {
+                    if (cq.GetQueue()[key].calcState == E_CALC_STATE.COMPLETE)
+                        SetItem(cq.GetQueue()[key]);
+                }
             }
 
             // 연결이 끊어진 구슬 떨구기 

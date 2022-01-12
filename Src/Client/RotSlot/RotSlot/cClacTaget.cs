@@ -118,5 +118,18 @@ namespace RotSlot
             return null;
         }
 
+        public int GetCalcStateCount(E_CALC_STATE calcs_tate)
+        {
+            int retVal = 0;
+
+            foreach (int k in mCalcQueue.Keys)
+            {
+                if (mCalcQueue[k].calcState == calcs_tate)
+                    retVal++;
+            }
+
+            return retVal;
+        }
+
     }
 }

@@ -16,7 +16,7 @@ namespace RotSlot
 
             // 밑에도 체크를 해야함 4,1이 안들어감
             //bs.SetItem(4, 0, cBubbleHelper.Factory(E_BUBBLE_TYPE.RED));
-            //bs.SetItem(4, 1, cBubbleHelper.Factory(E_BUBBLE_TYPE.RED));
+            bs.SetItem(0, 0, cBubbleHelper.Factory(E_BUBBLE_TYPE.RED));
             bs.Print();
             Console.WriteLine("\n");
 

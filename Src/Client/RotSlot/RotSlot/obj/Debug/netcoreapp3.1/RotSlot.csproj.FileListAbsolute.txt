@@ -39,3 +39,17 @@ C:\Users\My PC\Downloads\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.csproj.
 C:\Users\My PC\Downloads\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.dll
 C:\Users\My PC\Downloads\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.pdb
 C:\Users\My PC\Downloads\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.genruntimeconfig.cache
+F:\project\MStudy\Src\Client\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.exe
+F:\project\MStudy\Src\Client\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.deps.json
+F:\project\MStudy\Src\Client\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.runtimeconfig.json
+F:\project\MStudy\Src\Client\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.runtimeconfig.dev.json
+F:\project\MStudy\Src\Client\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.dll
+F:\project\MStudy\Src\Client\RotSlot\RotSlot\bin\Debug\netcoreapp3.1\RotSlot.pdb
+F:\project\MStudy\Src\Client\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.csproj.AssemblyReference.cache
+F:\project\MStudy\Src\Client\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.GeneratedMSBuildEditorConfig.editorconfig
+F:\project\MStudy\Src\Client\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.AssemblyInfoInputs.cache
+F:\project\MStudy\Src\Client\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.AssemblyInfo.cs
+F:\project\MStudy\Src\Client\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.csproj.CoreCompileInputs.cache
+F:\project\MStudy\Src\Client\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.dll
+F:\project\MStudy\Src\Client\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.pdb
+F:\project\MStudy\Src\Client\RotSlot\RotSlot\obj\Debug\netcoreapp3.1\RotSlot.genruntimeconfig.cache
