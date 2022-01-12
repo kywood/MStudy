@@ -19,32 +19,65 @@ namespace RotSlot
 
     public class cBubbleHelper
     {
-        public static cBubble Factory(E_BUBBLE_TYPE type )
+        //public static cBubble Factory(cBubble cbubble)
+        //{
+        //    if (type == E_BUBBLE_TYPE.RED)
+        //        return new cBubbleRed(id);
+        //    else if (type == E_BUBBLE_TYPE.BLUE)
+        //        return new cBubbleBlue(id);
+        //    else if (type == E_BUBBLE_TYPE.YELLOW)
+        //        return new cBubbleYellow(id);
+        //    else if (type == E_BUBBLE_TYPE.GREEN)
+        //        return new cBubbleGreen(id);
+        //    else if (type == E_BUBBLE_TYPE.PURPLE)
+        //        return new cBubblePurple(id);
+
+        //    return null;
+        //}
+
+        public static cBubble Factory(E_BUBBLE_TYPE type , cPoint<int> id)
         {
             if (type == E_BUBBLE_TYPE.RED)
-                return new cBubbleRed();
+                return new cBubbleRed(id);
             else if (type == E_BUBBLE_TYPE.BLUE)
-                return new cBubbleBlue();
+                return new cBubbleBlue(id);
             else if (type == E_BUBBLE_TYPE.YELLOW)
-                return new cBubbleYellow();
+                return new cBubbleYellow(id);
             else if (type == E_BUBBLE_TYPE.GREEN)
-                return new cBubbleGreen();
+                return new cBubbleGreen(id);
             else if (type == E_BUBBLE_TYPE.PURPLE)
-                return new cBubblePurple();
+                return new cBubblePurple(id);
 
             return null;
         }
     }
 
-    public abstract class cBubble
+    public  class cBubble
     {
         E_BUBBLE_TYPE mType;
-        protected void SetBubbleType (E_BUBBLE_TYPE type)
+
+        cPoint<int> mID;
+
+        protected void SetBubbleType (E_BUBBLE_TYPE type , cPoint<int> id)
         {
             mType = type;
+            mID = id;
 
             Debug.Log("===" + mType + " ========== ");
         }
+
+        //HACK
+        public cBubble()
+        {
+
+        }
+
+        public cBubble(cBubble cb)
+        {
+            this.mType = cb.mType;
+            mID = cb.mID;
+        }
+
 
         public override string ToString()
         {
@@ -66,45 +99,60 @@ namespace RotSlot
 
             return false;
         }
+
+        public cPoint<int> GetID()
+        {
+            return mID;
+        }
+
+        public bool IsEqID(cPoint<int> id)
+        {
+            if(mID.x == id.x && mID.y == id.y)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 
     public class cBubbleRed : cBubble
     {
-        public cBubbleRed()
+        public cBubbleRed(cPoint<int> id)
         {
-            SetBubbleType(E_BUBBLE_TYPE.RED);
+            SetBubbleType(E_BUBBLE_TYPE.RED , id);
         }
     }
     public class cBubbleBlue : cBubble
     {
-        public cBubbleBlue()
+        public cBubbleBlue(cPoint<int> id)
         {
-            SetBubbleType(E_BUBBLE_TYPE.BLUE);
+            SetBubbleType(E_BUBBLE_TYPE.BLUE , id);
         }
                
     }
 
     class cBubbleYellow : cBubble
     {
-        public cBubbleYellow()
+        public cBubbleYellow(cPoint<int> id)
         {
-            SetBubbleType(E_BUBBLE_TYPE.YELLOW);
+            SetBubbleType(E_BUBBLE_TYPE.YELLOW , id);
         }
     }
 
     public class cBubbleGreen : cBubble
     {
-        public cBubbleGreen()
+        public cBubbleGreen(cPoint<int> id)
         {
-            SetBubbleType(E_BUBBLE_TYPE.GREEN);
+            SetBubbleType(E_BUBBLE_TYPE.GREEN , id);
         }
     }
 
     public class cBubblePurple : cBubble
     {
-        public cBubblePurple()
+        public cBubblePurple(cPoint<int> id)
         {
-            SetBubbleType(E_BUBBLE_TYPE.PURPLE);
+            SetBubbleType(E_BUBBLE_TYPE.PURPLE , id);
         }
     }
 

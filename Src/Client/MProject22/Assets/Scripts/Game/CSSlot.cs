@@ -19,7 +19,7 @@ public class CSSlot : MonoBehaviour
     }
 
 
-    public void Pang(List<cPoint<int>> out_pang, List<cPoint<int>> out_drop)
+    public void Pang(List<cBubble> out_pang, List<cBubble> out_drop)
     {
         mRotSlot.Pang(new cPoint<int>(mSlot.GetID(), mColsSlot.GetID()), out_pang, out_drop);
     }
@@ -40,7 +40,7 @@ public class CSSlot : MonoBehaviour
             //AppManager.Instance.BubbleManager.GetComponent<BubbleManager>().SetVisible(false);
             Debug.Log(collision.name + " " + mColsSlot.GetID() + " " + mSlot.GetID());
 
-            cBubble bb = cBubbleHelper.Factory(bubble.GetBubbleType());
+            cBubble bb = cBubbleHelper.Factory(bubble.GetBubbleType() , new cPoint<int>(mSlot.GetID() , mColsSlot.GetID() ));
             mSlot.Set(bb);
 
             Pool pool = ResPools.Instance.GetPool(MDefine.eResType.Bubble);

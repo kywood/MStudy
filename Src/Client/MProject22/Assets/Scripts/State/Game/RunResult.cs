@@ -21,24 +21,51 @@ public class RunResult : State
         waitingTime = 2;
 
 
-        List<cPoint<int>> out_pang = new List<cPoint<int>>();
-        List< cPoint<int>> out_drop = new List<cPoint<int>>();
+        List<cBubble> out_pang = new List<cBubble>();
+        List<cBubble> out_drop = new List<cBubble>();
 
         mCsSlot.Pang(out_pang, out_drop);
 
 
-        Debug.Log(" =======  out_pang BEGIN ============== ");
-        foreach ( cPoint<int> pos in out_pang)
+        if(out_pang.Count > 0)
         {
-            Debug.Log(pos.ToString());
+            Debug.Log(" =======  out_pang BEGIN ============== ");
+            foreach (cBubble bb in out_pang)
+            {
+                Debug.Log(bb.ToString());
+            }
+            Debug.Log(" =======  out_pang END ============== ");
+
+            Pool pool = ResPools.Instance.GetPool(MDefine.eResType.Bubble);
+
+            foreach( int k in  pool.ResList.Keys )
+            {
+                CSBubble csBubble = pool.ResList[k].GetComponent<CSBubble>();
+
+                foreach (cBubble bb in out_pang)
+                {
+                    if( csBubble.IsEqBubble(bb) )
+                    {
+                        pool.ResList[k].SetActive(false);                        
+                    }
+                    //Debug.Log(bb.ToString());
+                }
+
+                
+
+
+            }
+
         }
-        Debug.Log(" =======  out_pang END ============== ");
+
+        
+
 
 
         Debug.Log(" =======  out_drop BEGIN ============== ");
-        foreach (cPoint<int> pos in out_drop)
+        foreach (cBubble bb in out_drop)
         {
-            Debug.Log(pos.ToString());
+            Debug.Log(bb.ToString());
         }
         Debug.Log(" =======  out_drop END ============== ");
 

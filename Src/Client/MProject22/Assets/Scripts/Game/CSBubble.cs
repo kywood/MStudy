@@ -27,4 +27,9 @@ public class CSBubble : MonoBehaviour
         mBubble = null;
     }
 
+    public bool IsEqBubble(cBubble bb )
+    {
+        return mBubble.IsEqID(bb.GetID());
+    }
+
 }
