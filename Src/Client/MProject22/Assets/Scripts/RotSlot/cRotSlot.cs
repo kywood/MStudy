@@ -200,16 +200,42 @@ namespace RotSlot
             return mRotQueue.GetCount();
         }
 
+
         protected cSlot<T> GetSlot(int x, int y)
         {
-            cColsSlot<T> colsSlot = mRotQueue.GetItemByIDX(y);
-            return colsSlot == null ? null : colsSlot.GetSlotByIDX(x);
+            return GetSlot(new cPoint<int>(x, y));
+            //cColsSlot<T> colsSlot = mRotQueue.GetItemByIDX(y);
+            //return colsSlot == null ? null : colsSlot.GetSlotByIDX(x);
         }
+
+
         protected cSlot<T> GetSlot(cPoint<int> point)
         {
             cColsSlot<T> colsSlot = GetColsSlot(point);// mRotQueue.GetItemByIDX(point.y);
-            return colsSlot == null ? null : colsSlot.GetSlotByIDX(point.x);
+
+            if (colsSlot == null)
+                return null;
+
+            cSlot<T> slot = colsSlot.GetSlotByIDX(point.x);
+
+            if (slot == null)
+            {
+                return null;
+            }
+
+            return slot;
         }
+
+        //protected cSlot<T> GetSlot(int x, int y)
+        //{
+        //    cColsSlot<T> colsSlot = mRotQueue.GetItemByIDX(y);
+        //    return colsSlot == null ? null : colsSlot.GetSlotByIDX(x);
+        //}
+        //protected cSlot<T> GetSlot(cPoint<int> point)
+        //{
+        //    cColsSlot<T> colsSlot = GetColsSlot(point);// mRotQueue.GetItemByIDX(point.y);
+        //    return colsSlot == null ? null : colsSlot.GetSlotByIDX(point.x);
+        //}
 
         public void SetItem(int x, int y, T item)
         {

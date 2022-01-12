@@ -84,7 +84,7 @@ public class cBubbleSlot : cRotSlot<cBubble>{
     private void GetFindDropBubble(List<cPoint<int>> out_drop)
     {
         cCalcQueue cq = new cCalcQueue();
-        for (int i = 0; i < GetColsSlotCount(); i++)
+        for (int i = 1; i < GetColsSlotCount(); i++)
         {
             cColsSlot<cBubble> colsSlot = GetColsSlot(i);
             for (int slotIdx = 0; slotIdx < colsSlot.GetCount(); slotIdx++)
@@ -233,13 +233,16 @@ public class cBubbleSlot : cRotSlot<cBubble>{
                 }
             });
 
-        // null Setting
-        foreach (int key in cq.GetQueue().Keys)
+        if (cq.GetCalcStateCount(E_CALC_STATE.COMPLETE) >= 3)
         {
-            if (cq.GetQueue()[key].calcState == E_CALC_STATE.COMPLETE)
+            // null Setting
+            foreach (int key in cq.GetQueue().Keys)
             {
-                out_pang.Add(cq.GetQueue()[key]);
-                SetItem(cq.GetQueue()[key]);
+                if (cq.GetQueue()[key].calcState == E_CALC_STATE.COMPLETE)
+                {
+                    out_pang.Add(cq.GetQueue()[key]);
+                    SetItem(cq.GetQueue()[key]);
+                }
             }
         }
 

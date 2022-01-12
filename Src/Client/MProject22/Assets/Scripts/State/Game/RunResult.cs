@@ -27,17 +27,20 @@ public class RunResult : State
         mCsSlot.Pang(out_pang, out_drop);
 
 
-        Debug.Log(" =======  out_pang ============== ");
+        Debug.Log(" =======  out_pang BEGIN ============== ");
         foreach ( cPoint<int> pos in out_pang)
         {
             Debug.Log(pos.ToString());
         }
+        Debug.Log(" =======  out_pang END ============== ");
 
-        Debug.Log(" =======  out_drop ============== ");
+
+        Debug.Log(" =======  out_drop BEGIN ============== ");
         foreach (cPoint<int> pos in out_drop)
         {
             Debug.Log(pos.ToString());
         }
+        Debug.Log(" =======  out_drop END ============== ");
 
         //    //AppManager.Instance.BubbleManager.GetComponent<BubbleManager>().SetVisible(false);
         //Debug.Log(collision.name + " " + mColsSlot.GetID() + " " + mSlot.GetID());
