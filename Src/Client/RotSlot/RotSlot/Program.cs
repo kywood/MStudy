@@ -50,6 +50,16 @@ namespace RotSlot
             bs.Pang(new cPoint<int>(3, 3));
             bs.Print();
             Console.WriteLine("\n");
+
+            // 무형 함수
+            Action<int, int> ma =
+            (int a , int b) =>
+            {
+                Console.WriteLine("a:" + a + " b:" + b);
+            };
+
+            ma.Invoke(10, 20);
+
         }
     }
 }
