@@ -36,11 +36,20 @@ namespace RotSlot
             Console.WriteLine("--------------PANG---------------");
 
             // Pang
-            bs.Pang(new cPoint<int>(3, 0));
+            //bs.Pang(new cPoint<int>(3, 0));
             bs.Print();
             Console.WriteLine("\n");
 
+            bs.ForWard();
+            bs.ForWard();
+            bs.ForWard();
 
+            bs.Print();
+            Console.WriteLine("\n");
+
+            bs.Pang(new cPoint<int>(3, 3));
+            bs.Print();
+            Console.WriteLine("\n");
         }
     }
 }
