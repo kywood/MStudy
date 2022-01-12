@@ -60,6 +60,33 @@ namespace RotSlot
 
             ma.Invoke(10, 20);
 
+
+
+            List<Action<int, int>> li = new List<Action<int, int>>();
+
+            li.Add(ma);
+            li.Add(ma);
+            li.Add(ma);
+            li.Add((int a, int b) =>
+            {
+                Console.WriteLine("a:" + a + " b:" + b);
+            });
+            li.Add(ma);
+            li.Add(ma);
+            li.Add((int a, int b) =>
+            {
+                Console.WriteLine("a:" + a + " b:" + b);
+            });
+            li.Add(ma);
+
+
+
+
+            //foreach(Action<int, int> act in li)
+            //{
+            //    act.Invoke(10, 100);
+            //}
+
         }
     }
 }
