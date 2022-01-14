@@ -13,6 +13,75 @@ public class RunResult : State
 
     CSSlot mCsSlot;
 
+
+    void PangAct(List<cBubble> out_pang)
+    {
+        if (out_pang.Count > 0)
+        {
+            Debug.Log(" =======  out_pang BEGIN ============== ");
+            foreach (cBubble bb in out_pang)
+            {
+                Debug.Log(bb.ToString());
+            }
+            Debug.Log(" =======  out_pang END ============== ");
+
+            Pool pool = ResPools.Instance.GetPool(MDefine.eResType.Bubble);
+
+            foreach (int k in pool.ResList.Keys)
+            {
+                if (pool.ResList[k].activeSelf == false)
+                    continue;
+
+                CSBubble csBubble = pool.ResList[k].GetComponent<CSBubble>();
+
+                foreach (cBubble bb in out_pang)
+                {
+                    if (csBubble.IsEqBubble(bb))
+                    {
+                        pool.ResList[k].SetActive(false);
+                    }
+                    //Debug.Log(bb.ToString());
+                }
+            }
+        }
+    }
+
+    void DropAct(List<cBubble> out_drop)
+    {
+        if (out_drop.Count > 0)
+        {
+            Debug.Log(" =======  out_drop BEGIN ============== ");
+            foreach (cBubble bb in out_drop)
+            {
+                Debug.Log(bb.ToString());
+            }
+            Debug.Log(" =======  out_drop END ============== ");
+
+            Pool pool = ResPools.Instance.GetPool(MDefine.eResType.Bubble);
+
+            foreach (int k in pool.ResList.Keys)
+            {
+                if (pool.ResList[k].activeSelf == false)
+                    continue;
+
+                CSBubble csBubble = pool.ResList[k].GetComponent<CSBubble>();
+
+                foreach (cBubble bb in out_drop)
+                {
+                    if (csBubble.IsEqBubble(bb))
+                    {
+                        (pool.ResList[k].GetComponent<CSBubble>()).SetMoving();
+                        //pool.ResList[k].transform.position.y--;
+                    }
+                    //Debug.Log(bb.ToString());
+                }
+            }
+        }
+    }
+    public void SetCsSlot(CSSlot csslot)
+    {
+        mCsSlot = csslot;
+    }
     public override void OnEnter()
     {
         //Debug.Log("Run OnEnter");
@@ -26,66 +95,15 @@ public class RunResult : State
 
         mCsSlot.Pang(out_pang, out_drop);
 
-
-        if(out_pang.Count > 0)
-        {
-            Debug.Log(" =======  out_pang BEGIN ============== ");
-            foreach (cBubble bb in out_pang)
-            {
-                Debug.Log(bb.ToString());
-            }
-            Debug.Log(" =======  out_pang END ============== ");
-
-            Pool pool = ResPools.Instance.GetPool(MDefine.eResType.Bubble);
-
-            foreach( int k in  pool.ResList.Keys )
-            {
-                if (pool.ResList[k].activeSelf == false)
-                    continue;
-
-                CSBubble csBubble = pool.ResList[k].GetComponent<CSBubble>();
-
-                foreach (cBubble bb in out_pang)
-                {
-                    if( csBubble.IsEqBubble(bb) )
-                    {
-                        pool.ResList[k].SetActive(false);                        
-                    }
-                    //Debug.Log(bb.ToString());
-                }
-            }
-        }
-
-        
-
-
-
-        Debug.Log(" =======  out_drop BEGIN ============== ");
-        foreach (cBubble bb in out_drop)
-        {
-            Debug.Log(bb.ToString());
-        }
-        Debug.Log(" =======  out_drop END ============== ");
-
-        //    //AppManager.Instance.BubbleManager.GetComponent<BubbleManager>().SetVisible(false);
-        //Debug.Log(collision.name + " " + mColsSlot.GetID() + " " + mSlot.GetID());
-
-
-
+        PangAct(out_pang);
+        DropAct(out_drop);
     }
 
     public override void OnLeave()
     {
         //AppManager.Instance.BubbleManager.GetComponent<BubbleManager>().SetVisible(false);
         //Debug.Log("Run OnLeave");
-
     }
-
-    public void SetCsSlot( CSSlot csslot )
-    {
-        mCsSlot = csslot;
-    }
-
 
     public override void OnUpdate()
     {
@@ -96,7 +114,18 @@ public class RunResult : State
         //else
         //    Debug.Log(mCsSlot);
 
-        timer += Time.deltaTime;
+
+        Pool pool = ResPools.Instance.GetPool(MDefine.eResType.Bubble);
+        foreach (int k in pool.ResList.Keys)
+        {
+            if (pool.ResList[k].activeSelf == false)
+                continue;
+            (pool.ResList[k].GetComponent<CSBubble>()).OnUpdate();
+        }
+
+
+
+            timer += Time.deltaTime;
         if (timer > waitingTime)
         {
             //Action

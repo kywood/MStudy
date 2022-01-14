@@ -29,6 +29,18 @@ public class Defines
         return mScenesNms[scene];
     }
 
+
+    public enum E_MOVING_STATE
+    {
+        STOP,
+        MOVE,
+
+        MAX
+    }
+
+
+
+
     public const int G_BUBBLE_ROW_COUNT = 12;
     public const int G_BUBBLE_COL_COUNT = 8;
 
