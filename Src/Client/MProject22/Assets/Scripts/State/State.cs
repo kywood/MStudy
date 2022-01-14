@@ -16,6 +16,7 @@ public class State
     {
         if( act != null )
         {
+            //act(this);
             act.Invoke(this);
         }
 

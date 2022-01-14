@@ -40,6 +40,9 @@ public class RunResult : State
 
             foreach( int k in  pool.ResList.Keys )
             {
+                if (pool.ResList[k].activeSelf == false)
+                    continue;
+
                 CSBubble csBubble = pool.ResList[k].GetComponent<CSBubble>();
 
                 foreach (cBubble bb in out_pang)
@@ -50,12 +53,7 @@ public class RunResult : State
                     }
                     //Debug.Log(bb.ToString());
                 }
-
-                
-
-
             }
-
         }
 
         

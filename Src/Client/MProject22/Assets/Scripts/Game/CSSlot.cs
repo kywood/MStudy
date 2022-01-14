@@ -78,9 +78,12 @@ public class CSSlot : MonoBehaviour
             //// 0 1 2 3 4
             //// 4 4 4 4 4
 
+            
+
             //HACK 
+            //무형 함수
             AppManager.Instance.GetStateManager().SetGameState(StateManager.E_GAME_STATE.RUN_RESULT , 
-                ( state ) => {
+                (State state) => {
                     ((RunResult)state).SetCsSlot(this);
                 });
 
