@@ -87,6 +87,7 @@ public class Ready : State
 
     public override void OnUpdate()
     {
+        base.OnUpdate();
         //AppManager.Instance.GetStateManager().SetGameState(StateManager.E_GAME_STATE.SHOOT_READY);
     }
 }

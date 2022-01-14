@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MDefine;
-
+using static Defines;
 
 namespace MDefine
 {
@@ -88,6 +88,42 @@ public class ResPools : SingletonMonoBehaviour<ResPools>
     //    Paticle.GetComponent<ParticleSystem>().startColor = color;
     //    return true;
     //}
+
+    public bool IsStopAllBubble()
+    {
+        Pool pool = GetPool(eResType.Bubble);
+
+        foreach (int k in pool.ResList.Keys)
+        {
+            if ((pool.ResList[k].GetComponent<CSBubble>()).GetMoving() != E_MOVING_STATE.STOP)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+    public bool IsActiveAll(eResType resType , bool active )
+    {
+        Pool pool = GetPool(resType);
+        //if ( pool == null )
+        //{
+        //    return false;
+        //}
+
+        foreach( int k in pool.ResList.Keys)
+        {
+            if( pool.ResList[k].activeSelf != active)
+            {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
 
     public Pool GetPool(eResType resType)
     {

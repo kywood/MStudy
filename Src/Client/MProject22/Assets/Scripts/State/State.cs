@@ -30,6 +30,15 @@ public class State
 
     public virtual void OnUpdate()
     {
+        //HACK
+        Pool pool = ResPools.Instance.GetPool(MDefine.eResType.Bubble);
+        foreach (int k in pool.ResList.Keys)
+        {
+            if (pool.ResList[k].activeSelf == false)
+                continue;
+
+            (pool.ResList[k].GetComponent<CSBubble>()).OnUpdate();
+        }
 
     }
 

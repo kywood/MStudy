@@ -53,6 +53,8 @@ public class ShootReady : State
 
     public override void OnUpdate()
     {
+        base.OnUpdate();
+
         if (Input.GetMouseButton(0))
         {
             bMousePress = true;

@@ -8,8 +8,8 @@ using UnityEngine;
 public class RunResult : State
 {
     // Start is called before the first frame update
-    float timer;
-    int waitingTime;
+    //float timer;
+    //int waitingTime;
 
     CSSlot mCsSlot;
 
@@ -86,8 +86,8 @@ public class RunResult : State
     {
         //Debug.Log("Run OnEnter");
         //AppManager.Instance.BubbleManager.GetComponent<BubbleManager>().SetVisible(true);
-        timer = 0.0f;
-        waitingTime = 2;
+        //timer = 0.0f;
+        //waitingTime = 2;
 
 
         List<cBubble> out_pang = new List<cBubble>();
@@ -107,6 +107,8 @@ public class RunResult : State
 
     public override void OnUpdate()
     {
+        base.OnUpdate();
+
         //Thread.Sleep(1 * 1000);
 
         //if (mCsSlot == null)
@@ -115,25 +117,28 @@ public class RunResult : State
         //    Debug.Log(mCsSlot);
 
 
-        Pool pool = ResPools.Instance.GetPool(MDefine.eResType.Bubble);
-        foreach (int k in pool.ResList.Keys)
+        if( ResPools.Instance.IsStopAllBubble() )
         {
-            if (pool.ResList[k].activeSelf == false)
-                continue;
-            (pool.ResList[k].GetComponent<CSBubble>()).OnUpdate();
-        }
-
-
-
-            timer += Time.deltaTime;
-        if (timer > waitingTime)
-        {
-            //Action
             AppManager.Instance.GetStateManager().SetGameState(StateManager.E_GAME_STATE.SHOOT_READY);
-            timer = 0;
         }
 
-        
+        //Pool pool = ResPools.Instance.GetPool(MDefine.eResType.Bubble);
+        //foreach (int k in pool.ResList.Keys)
+        //{
+        //    if (pool.ResList[k].activeSelf == false)
+        //        continue;
+        //    (pool.ResList[k].GetComponent<CSBubble>()).OnUpdate();
+        //}
+
+        //timer += Time.deltaTime;
+        //if (timer > waitingTime)
+        //{
+        //    //Action
+        //    AppManager.Instance.GetStateManager().SetGameState(StateManager.E_GAME_STATE.SHOOT_READY);
+        //    timer = 0;
+        //}
+
+
 
     }
 }

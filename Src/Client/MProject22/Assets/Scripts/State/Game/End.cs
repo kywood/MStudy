@@ -18,6 +18,6 @@ public class End : State
 
     public override void OnUpdate()
     {
-
+        base.OnUpdate();
     }
 }

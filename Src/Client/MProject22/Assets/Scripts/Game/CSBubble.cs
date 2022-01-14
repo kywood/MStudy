@@ -31,6 +31,11 @@ public class CSBubble : MonoBehaviour
         mMovingState = E_MOVING_STATE.MOVE;
     }
 
+    public E_MOVING_STATE GetMoving()
+    {
+        return mMovingState;
+    }
+
      void ReSetMoving()
     {
         mMovingState = E_MOVING_STATE.STOP;
@@ -63,6 +68,23 @@ public class CSBubble : MonoBehaviour
     public bool IsEqBubble(cBubble bb )
     {
         return mBubble.IsEqID(bb.GetID());
+    }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if( collision.gameObject.name.CompareTo("WB") == 0 )
+    //    {
+    //        SetActive(false);
+    //    }
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name.CompareTo("WB") == 0)
+        {
+            //Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            SetActive(false);
+        }
     }
 
 }
