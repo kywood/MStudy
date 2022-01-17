@@ -29,6 +29,11 @@ public class AppManager : DontDestroy<AppManager>
         return _StateManager;
     }
 
+    public BubbleManager GetBubbleManager()
+    {
+        return BubbleManager.GetComponent<BubbleManager>();
+    }
+
     override protected void OnStart()
     {
         base.OnStart();

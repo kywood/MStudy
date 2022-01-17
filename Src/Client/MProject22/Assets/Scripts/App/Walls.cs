@@ -9,5 +9,19 @@ public class Walls : MonoBehaviour
     public GameObject WT;
     public GameObject WL;
     public GameObject WR;
-    
+    public GameObject WB;
+
+    public Color WColor;
+
+
+    private void Start()
+    {
+        ((SpriteRenderer)(WT.GetComponent<SpriteRenderer>())).color = WColor;
+
+        ((SpriteRenderer)(WB.GetComponent<SpriteRenderer>())).color = WColor;
+        ((SpriteRenderer)(WL.GetComponent<SpriteRenderer>())).color = WColor;
+        ((SpriteRenderer)(WR.GetComponent<SpriteRenderer>())).color = WColor;
+
+    }
+
 }

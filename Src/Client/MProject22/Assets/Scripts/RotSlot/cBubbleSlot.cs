@@ -234,7 +234,7 @@ public class cBubbleSlot : cRotSlot<cBubble>{
                 }
             });
 
-        if (cq.GetCalcStateCount(E_CALC_STATE.COMPLETE) >= 3)
+        if (cq.GetCalcStateCount(E_CALC_STATE.COMPLETE) >= Defines.G_BUBBLE_PANG_COUNT)
         {
             // null Setting
             foreach (int key in cq.GetQueue().Keys)

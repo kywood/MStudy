@@ -18,12 +18,13 @@ public class CSBubble : MonoBehaviour
         mBubble = bubble;
 
         SpriteRenderer sp = GetComponent<SpriteRenderer>();
-        sp.color = ConstData.GetBubbleProperty(bubble.GetBubbleType()).mColor;
+        //sp.color = ConstData.GetBubbleProperty(bubble.GetBubbleType()).mColor;
+        //Color c = ConstData.GetBubbleProperty(bubble.GetBubbleType()).mColor;
 
-        Color c = ConstData.GetBubbleProperty(bubble.GetBubbleType()).mColor;
+
 
         Debug.Log(bubble.GetBubbleType());
-        Debug.Log(c.ToString());
+//        Debug.Log(c.ToString());//
     }
 
     public void SetMoving()

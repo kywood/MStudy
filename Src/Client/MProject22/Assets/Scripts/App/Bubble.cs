@@ -9,8 +9,8 @@ public class Bubble : MonoBehaviour
     private E_BUBBLE_TYPE mBubbleType = E_BUBBLE_TYPE.NONE;
     public void Awake()
     {
-        transform.localScale = new Vector3(Defines.G_SLOT_RADIUS * 2,
-            Defines.G_SLOT_RADIUS * 2, 0.0f);
+        //transform.localScale = new Vector3(Defines.G_SLOT_RADIUS * 2,
+        //    Defines.G_SLOT_RADIUS * 2, 0.0f);
     }
 
     public void Start()
@@ -28,12 +28,21 @@ public class Bubble : MonoBehaviour
         mBubbleType = bubble_type;
 
         SpriteRenderer sp = GetComponent<SpriteRenderer>();
-        Color c = ConstData.GetBubbleProperty(bubble_type).mColor;
-        sp.color = ConstData.GetBubbleProperty(bubble_type).mColor;
+
+        sp.sprite = AppManager.Instance.GetBubbleManager().GetSprite(bubble_type);
+
+        //Color c = ConstData.GetBubbleProperty(bubble_type).mColor;
+        //sp.color = ConstData.GetBubbleProperty(bubble_type).mColor;
+
+        //GameObject NewObj = Util.AddChildWithOutScaleLayer(parent, Instantiate(Resources.Load(preFabsPath) as GameObject));
+
+        //sp.sprite = Resources.Load< Sprite>(ConstData.GetBubbleProperty(bubble_type).mImgPath);
+
+        //Instantiate(Resources.Load("Imgs/Bubble/1.png")) as 
 
 
         Debug.Log(bubble_type);
-        Debug.Log(c.ToString());
+        //Debug.Log(c.ToString());
 
 
     }

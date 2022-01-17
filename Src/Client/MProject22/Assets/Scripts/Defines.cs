@@ -39,6 +39,7 @@ public class Defines
     }
 
 
+    public const int G_BUBBLE_PANG_COUNT = 3;
 
 
     public const int G_BUBBLE_ROW_COUNT = 12;
