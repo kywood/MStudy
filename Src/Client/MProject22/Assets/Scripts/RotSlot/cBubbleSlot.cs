@@ -142,23 +142,11 @@ public class cBubbleSlot : cRotSlot<cBubble>{
             {
                 cBubble newbb = new cBubble(GetBubble(calcTarget));
                 out_list.Add(newbb);
-                //out_list.Add(calcTarget);
+                SetItem(calcTarget);
+
             }
             calcTarget.SetComplete();
 
-            //HACK == 해당 부분 수정 할것......
-            //SetItem(calcTarget);
-
-
-
-            //out_list != null ? out_list.Add(calcTarget) : 
-            //out_drop.Add(calcTarget);
-
-            //SetItem(cq.GetQueue()[key]);
-
-            
-
-            
 
         }
     }
