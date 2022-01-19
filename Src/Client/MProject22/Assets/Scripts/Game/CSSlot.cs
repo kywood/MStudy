@@ -21,8 +21,10 @@ public class CSSlot : MonoBehaviour
 
     public void Pang(List<cBubble> out_pang, List<cBubble> out_drop)
     {
-        mRotSlot.Pang(new cPoint<int>(mSlot.GetID(), mColsSlot.GetID()), out_pang, out_drop);
+        mRotSlot.PangByID(new cPoint<int>(mSlot.GetID(), mColsSlot.GetID()), out_pang, out_drop);
     }
+
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,6 +33,8 @@ public class CSSlot : MonoBehaviour
             mRotSlot.CheckStay( new cPoint<int>(mSlot.GetID() , mColsSlot.GetID()) ) 
             )
         {
+            // 슬롯의 IDX 가 0일때는 제일위니까 붙는다.
+
             BubbleManager bubbleManager = AppManager.Instance.BubbleManager.GetComponent<BubbleManager>();
 
             bubbleManager.SetVisible(false);
@@ -50,35 +54,11 @@ public class CSSlot : MonoBehaviour
             CSBubble cb = BubbleGO.GetComponent<CSBubble>();
             cb.SetBubble(bb);
 
-            cb.transform.localScale = new Vector3(Defines.G_SLOT_RADIUS * 2, Defines.G_SLOT_RADIUS * 2, 0.0f);
+
+            //HACK
+            //cb.transform.localScale = new Vector3(Defines.G_SLOT_RADIUS * 2, Defines.G_SLOT_RADIUS * 2, 0.0f);
             cb.transform.position = this.transform.position;
-
-            //STUDY
-
-            ////CSSlot csslot = new CSSlot();
-            //List<System.Action<State>> acList = new List<System.Action<State>>();
-
-            //CSSlot csslot = new CSSlot();
-            //for ( int i = 0; i < 5; i++)
-            //{
-            //    csslot.SetI(i);
-
-            //    acList.Add(
-            //        (state) => {
-            //            ((RunResult)state).SetCsSlot(csslot);
-            //            Debug.Log(GetCsSlot().GetI());
-            //        }
-            //        );
-            //}
-
-            //foreach(System.Action<State> act in acList )
-            //{
-            //    act.Invoke();
-            //}
-            //// 0 1 2 3 4
-            //// 4 4 4 4 4
-
-            
+                        
 
             //HACK 
             //무형 함수

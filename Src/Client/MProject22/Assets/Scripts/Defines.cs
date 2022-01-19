@@ -8,6 +8,14 @@ public class Defines
 {
 
 
+    public enum E_WALL_NM
+    {
+        WT,
+        WB,
+        WL,
+        WR
+    }
+
     public enum E_SCENES
     {
         LOGO,

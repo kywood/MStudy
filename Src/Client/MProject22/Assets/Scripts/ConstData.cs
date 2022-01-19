@@ -6,6 +6,23 @@ using UnityEngine;
 
 class ConstData
 {
+
+
+    private static List<E_SLOT_CHK_DIR> mSlotChkDirStay = new List<E_SLOT_CHK_DIR>()
+    {   E_SLOT_CHK_DIR.LEFT ,
+        E_SLOT_CHK_DIR.RIGHT ,
+        E_SLOT_CHK_DIR.DOWN_LEFT ,
+        E_SLOT_CHK_DIR.DOWN_RIGHT
+    };
+
+    public static List<E_SLOT_CHK_DIR> GetChkStaySlotOffect()
+    {
+        return mSlotChkDirStay;
+    }
+
+
+
+
     public class cBubbleProperty
     {
         //public Color mColor;

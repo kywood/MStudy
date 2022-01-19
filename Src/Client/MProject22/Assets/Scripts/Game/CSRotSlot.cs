@@ -36,7 +36,7 @@ public class CSRotSlot : MonoBehaviour
 
         for (int colsSlotIdx = 0; colsSlotIdx < bs.GetColsSlotCount() ; colsSlotIdx++)
         {
-            cColsSlot<cBubble> colsSlot = bs.GetColsSlot(colsSlotIdx);
+            cColsSlot<cBubble> colsSlot = bs.GetColsSlotByIDX(colsSlotIdx);
 
             int slotCount = colsSlot.GetCount();
 

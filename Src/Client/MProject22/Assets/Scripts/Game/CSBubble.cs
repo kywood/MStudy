@@ -18,6 +18,9 @@ public class CSBubble : MonoBehaviour
         mBubble = bubble;
 
         SpriteRenderer sp = GetComponent<SpriteRenderer>();
+
+        sp.sprite = AppManager.Instance.GetBubbleManager().GetSprite(bubble.GetBubbleType());
+
         //sp.color = ConstData.GetBubbleProperty(bubble.GetBubbleType()).mColor;
         //Color c = ConstData.GetBubbleProperty(bubble.GetBubbleType()).mColor;
 
@@ -81,7 +84,7 @@ public class CSBubble : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.CompareTo("WB") == 0)
+        if (collision.gameObject.name.CompareTo(E_WALL_NM.WB.ToString()) == 0)
         {
             //Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAA");
             SetActive(false);

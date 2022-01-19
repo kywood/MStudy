@@ -38,6 +38,28 @@ namespace RotSlot
             return null;
         }
 
+        public int GetItemIDXByID(int id)
+        {
+            for (int i = 0; i < mQueue.Length; i++)
+            {
+                if (mQueue[i].GetID() == id)
+                    return i;
+            }
+
+            throw new IndexOutOfRangeException();
+        }
+
+        public cPoint<int> ID2IDX(cPoint<int> point)
+        {
+            for (int i = 0; i < mQueue.Length; i++)
+            {
+                if (mQueue[i].GetID() == point.y)
+                    return new cPoint<int>(point.x, i);
+            }
+
+            throw new IndexOutOfRangeException();
+        }
+
         // T    cColsSlot<T>
         public T GetItemByIDX(int idx)
         {

@@ -37,25 +37,25 @@ public class cBubbleSlot : cRotSlot<cBubble>{
 
     }
 
-    private cBubble GetBubble(cPoint<int> pos)
+    private cBubble GetBubbleByIDX(cPoint<int> pos)
     {
         //if (pos.x < 0 || pos.y < 0)
         //    return null;
-        cSlot<cBubble> slot = GetSlot(pos);
+        cSlot<cBubble> slot = GetSlotByIDX(pos);
 
         return slot == null ? null : slot.GetItem();
     }
 
-    private bool Exist(cPoint<int> pos)
+    private bool ExistByID(cPoint<int> pos)
     {
-        cSlot<cBubble> slot = GetSlot(pos);
+        cSlot<cBubble> slot = GetSlotByID(pos);
 
         return (slot == null) ? false : true;
     }
 
-    private bool ExistBubble(cPoint<int> pos)
+    private bool ExistBubbleByID(cPoint<int> pos)
     {
-        cSlot<cBubble> slot = GetSlot(pos);
+        cSlot<cBubble> slot = GetSlotByID(pos);
 
         if (slot.GetItem() != null)
             return true;
@@ -63,7 +63,7 @@ public class cBubbleSlot : cRotSlot<cBubble>{
         return false;
     }
 
-    private bool ChkDropStartBubble(cPoint<int> pos, cColsSlot<cBubble> cols_slot, cBubble bb)
+    private bool ChkDropStartBubbleByIDX(cPoint<int> pos, cColsSlot<cBubble> cols_slot, cBubble bb)
     {
         // HACK 수정해야함.....
         for (int i = (int)E_SLOT_CHK_DIR.LEFT; i <= (int)E_SLOT_CHK_DIR.UP_RIGHT; i++)
@@ -71,7 +71,7 @@ public class cBubbleSlot : cRotSlot<cBubble>{
             cPoint<int> new_pos = new cPoint<int>(pos.x + ChkOffSet[cols_slot.GetColsType()][(E_SLOT_CHK_DIR)i].x,
                                     pos.y + ChkOffSet[cols_slot.GetColsType()][(E_SLOT_CHK_DIR)i].y);
 
-            cBubble newbb = GetBubble(new_pos);
+            cBubble newbb = GetBubbleByIDX(new_pos);
 
             if (newbb != null)
                 return false;
@@ -86,18 +86,18 @@ public class cBubbleSlot : cRotSlot<cBubble>{
         cCalcQueue cq = new cCalcQueue();
         for (int i = 1; i < GetColsSlotCount(); i++)
         {
-            cColsSlot<cBubble> colsSlot = GetColsSlot(i);
+            cColsSlot<cBubble> colsSlot = GetColsSlotByIDX(i);
             for (int slotIdx = 0; slotIdx < colsSlot.GetCount(); slotIdx++)
             {
                 cPoint<int> pos = new cPoint<int>(slotIdx, i);
 
-                cBubble bb = GetBubble(pos);
+                cBubble bb = GetBubbleByIDX(pos);
 
                 if (bb == null)
                     continue;
 
                 // 버블을 찾으면
-                if (ChkDropStartBubble(pos, colsSlot, bb))
+                if (ChkDropStartBubbleByIDX(pos, colsSlot, bb))
                 {
                     Console.WriteLine("GetFindDropBubble : [{0}] [{1} , {2}]", bb.GetType(), pos.x, pos.y);
                     cq.Add(pos);
@@ -106,7 +106,7 @@ public class cBubbleSlot : cRotSlot<cBubble>{
         }
 
         QueueAct(cq, (cq, stBubble, new_pos) => {
-            cBubble newbb = GetBubble(new_pos);
+            cBubble newbb = GetBubbleByIDX(new_pos);
             if (newbb != null)
             {
                 cq.Add(new_pos);
@@ -120,8 +120,8 @@ public class cBubbleSlot : cRotSlot<cBubble>{
         {
             cCalcTarget calcTarget = cq.Pop();
 
-            cColsSlot<cBubble> colsSlot = GetColsSlot(calcTarget);
-            cBubble stBubble = GetBubble(calcTarget);
+            cColsSlot<cBubble> colsSlot = GetColsSlotByIDX(calcTarget);
+            cBubble stBubble = GetBubbleByIDX(calcTarget);
 
             // stBubble == null;
             // 부모자식 개념 탑재
@@ -140,9 +140,9 @@ public class cBubbleSlot : cRotSlot<cBubble>{
 
             if( out_list != null )
             {
-                cBubble newbb = new cBubble(GetBubble(calcTarget));
+                cBubble newbb = new cBubble(GetBubbleByIDX(calcTarget));
                 out_list.Add(newbb);
-                SetItem(calcTarget);
+                SetItemByID(calcTarget);
 
             }
             calcTarget.SetComplete();
@@ -151,9 +151,78 @@ public class cBubbleSlot : cRotSlot<cBubble>{
         }
     }
 
+    //// 
+    //public bool FindStaySlot(cPoint<int> pos_id , cPoint<int> out_stay_pos_idx)
+    //{
+    //    cPoint<int> pos_idx = ID2IDX(pos_id);
+
+    //    cBubble newbb = GetBubbleByIDX(pos_idx);
+    //    if (newbb != null)
+    //    {
+    //        // bubble 이 있다..
+    //        if( pos_idx.y == 0)
+    //        {
+    //            out_stay_pos_idx = pos_idx;
+    //            return true;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        cColsSlot<cBubble> colsSlot = GetColsSlotByID(pos_id);
+    //        E_COLS_TYPE colsType = colsSlot.GetColsType();
+
+    //        List<cPoint<int>> stayPosIdxList = new List<cPoint<int>>();
+
+    //        for( int i = 0; i < ConstData.GetChkStaySlotOffect().Count; i++ )
+    //        {
+    //            cPoint<int> new_pos_idx = new cPoint<int>(pos_idx.x + ChkOffSet[colsType][ConstData.GetChkStaySlotOffect()[i]].x,
+    //                                                pos_idx.y + ChkOffSet[colsType][ConstData.GetChkStaySlotOffect()[i]].y);
+
+    //            if (new_pos_idx.y < 0)
+    //                return true;
+
+    //            stayPosIdxList.Add(new_pos_idx);
+    //        }
+
+
+    //        foreach(E_SLOT_CHK_DIR dir in ConstData.GetChkStaySlotOffect())
+    //        {
+    //            cPoint<int> new_pos_idx = new cPoint<int>(pos_idx.x + ChkOffSet[colsType][dir].x,
+    //                                                pos_idx.y + ChkOffSet[colsType][dir].y);
+    //            if (new_pos_idx.y < 0)
+    //                return true;
+
+    //            stayPosIdxList.Add(new_pos_idx);
+    //        }
+
+
+
+
+    //    }
+
+
+
+    //    for (E_SLOT_CHK_DIR i = E_SLOT_CHK_DIR.UP_LEFT; i <= E_SLOT_CHK_DIR.UP_RIGHT; i++)
+    //    {
+    //        cPoint<int> new_pos = new cPoint<int>(pos.x + ChkOffSet[colsType][i].x,
+    //                                                pos.y + ChkOffSet[colsType][i].y);
+
+    //        if (new_pos.y < 0)
+    //            return true;
+
+    //        cBubble newbb = GetBubble(new_pos);
+    //        if (newbb != null)
+    //        {
+    //            return true;
+    //        }
+
+    //    }
+    //    return false;
+    //}
+
     public bool CheckStay(cPoint<int> pos)
     {
-        cColsSlot<cBubble> colsSlot = GetColsSlot(pos);
+        cColsSlot<cBubble> colsSlot = GetColsSlotByID(pos);
 
         E_COLS_TYPE colsType = colsSlot.GetColsType();
 
@@ -165,7 +234,7 @@ public class cBubbleSlot : cRotSlot<cBubble>{
             if (new_pos.y < 0)
                 return true;
 
-            cBubble newbb = GetBubble(new_pos);
+            cBubble newbb = GetBubbleByIDX(new_pos);
             if (newbb != null)
             {
                 return true;
@@ -209,22 +278,26 @@ public class cBubbleSlot : cRotSlot<cBubble>{
     //}
 
 
-    public void Pang(cPoint<int> pos , List<cBubble > out_pang , List<cBubble> out_drop)
+    public void PangByID(cPoint<int> pos , List<cBubble > out_pang , List<cBubble> out_drop)
     {
-        if (!ExistBubble(pos))
+        //HACK
+        if (!ExistBubbleByID(pos))
             return;
 
         out_pang.Clear();
         out_drop.Clear();
 
+        // id  -> idx
+        cPoint<int> npos = ID2IDX(pos);
+
         cCalcQueue cq = new cCalcQueue();
 
-        cq.Add(pos);
+        cq.Add(npos);
 
         QueueAct(cq,
             (cq, stBubble, new_pos) => {
 
-                cBubble newbb = GetBubble(new_pos);
+                cBubble newbb = GetBubbleByIDX(new_pos);
                 if (newbb != null)
                 {
                     if (stBubble.IsSameType(newbb))
@@ -241,10 +314,10 @@ public class cBubbleSlot : cRotSlot<cBubble>{
             {
                 if (cq.GetQueue()[key].calcState == E_CALC_STATE.COMPLETE)
                 {
-                    cBubble newbb = new cBubble( GetBubble(cq.GetQueue()[key]));
+                    cBubble newbb = new cBubble(GetBubbleByIDX(cq.GetQueue()[key]));
                     out_pang.Add(newbb);
 
-                    SetItem(cq.GetQueue()[key]);
+                    SetItemByIDX(cq.GetQueue()[key]);
                 }
             }
         }
