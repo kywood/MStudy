@@ -92,8 +92,11 @@ public class Bubble : MonoBehaviour
 
         cPoint<int> out_top_stay_pos_idx = new cPoint<int>();
         List<cPoint<int>> out_stay_pos_idx_list = new List<cPoint<int>>();
+
+
+
         if (csSlot.GetcBubbleSlot().FindStaySlot(
-                new cPoint<int>(csSlot.GetcSlot().GetID(), csSlot.GetcSlot().GetID()
+                new cPoint<int>( csSlot.GetcSlot().GetID() , csSlot.GetcSlot().GetParentID()
             ),
             out_top_stay_pos_idx,
             out_stay_pos_idx_list
@@ -116,9 +119,8 @@ public class Bubble : MonoBehaviour
 
             cSlot<cBubble> cSlot = bubbleSlot.GetSlotByIDX(stay_idx);
 
-
-
-
+            //cSlot 으로 실제 GameObject slot 를 찾는다.
+            CSSlot finalCsSlot = csRotSlot.GetCSSclot(cSlot);
 
             BubbleManager bubbleManager = AppManager.Instance.BubbleManager.GetComponent<BubbleManager>();
 
@@ -142,16 +144,16 @@ public class Bubble : MonoBehaviour
 
             //HACK
             //cb.transform.localScale = new Vector3(Defines.G_SLOT_RADIUS * 2, Defines.G_SLOT_RADIUS * 2, 0.0f);
-            cb.transform.position = this.transform.position;
+            cb.transform.position = finalCsSlot.transform.position;
 
 
-            ////HACK 
-            ////무형 함수
-            //AppManager.Instance.GetStateManager().SetGameState(StateManager.E_GAME_STATE.RUN_RESULT,
-            //    (State state) =>
-            //    {
-            //        //((RunResult)state).SetCsSlot(this);
-            //    });
+            //HACK 
+            //무형 함수
+            AppManager.Instance.GetStateManager().SetGameState(StateManager.E_GAME_STATE.RUN_RESULT,
+                (State state) =>
+                {
+                    ((RunResult)state).SetCsSlot(finalCsSlot);
+                });
 
         }
 

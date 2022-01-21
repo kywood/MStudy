@@ -24,6 +24,24 @@ public class CSSlot : MonoBehaviour
         mRotSlot.PangByID(new cPoint<int>(mSlot.GetID(), mColsSlot.GetID()), out_pang, out_drop);
     }
 
+    public bool EqCSlot(cSlot<cBubble> cslot )
+    {
+
+        Debug.Log("mSlot.GetParentID()" + mSlot.GetParentID());
+        Debug.Log("cslot.GetParentID()" + cslot.GetParentID());
+
+        Debug.Log("mSlot.GetID()" + mSlot.GetID());
+        Debug.Log("cslot.GetID()" + cslot.GetID());
+
+        if ( mSlot.GetParentID() == cslot.GetParentID() &&
+            mSlot.GetID() == cslot.GetID() )
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 
     public cSlot<cBubble> GetcSlot()
     {

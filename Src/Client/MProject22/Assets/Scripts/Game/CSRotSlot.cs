@@ -19,6 +19,26 @@ public class CSRotSlot : MonoBehaviour
         return mBubbleSlot;
     }
 
+    public CSSlot GetCSSclot(cSlot<cBubble> cslot)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            CSColsSlot csColsSlot = transform.GetChild(i).GetComponent< CSColsSlot>() ;
+
+            for (int j = 0; j < csColsSlot.transform.childCount; j++)
+            {
+                CSSlot csSlot = csColsSlot.transform.GetChild(j).GetComponent< CSSlot>();
+
+                if( csSlot.EqCSlot(cslot) )
+                {
+                    return csSlot;
+                }
+            }  
+        }
+
+        return null;
+    }
+
     public void InitRotSlot()
     {
         int BubbleRowNums = Defines.G_BUBBLE_ROW_COUNT;

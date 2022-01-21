@@ -15,10 +15,22 @@ namespace RotSlot
             
         }
 
+        public cPoint(cPoint<T> pt)
+        {
+            _x = pt.x;
+            _y = pt.y;
+        }
+
         public cPoint( T x , T y )
         {
             this.x = x;
             this.y = y;
+        }
+
+        public void DeepCopy(cPoint<T> pt)
+        {
+            _x = pt.x;
+            _y = pt.y;
         }
 
         public T x

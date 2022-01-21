@@ -156,19 +156,19 @@ public class cBubbleSlot : cRotSlot<cBubble>{
     {
         out_stay_pos_idx_list.Clear();
 
-        cPoint<int> pos_idx = ID2IDX(pos_id);
+        cPoint<int> pos_idx = new cPoint<int>(ID2IDX(pos_id));
 
         cBubble current_bb = GetBubbleByIDX(pos_idx);
-        if (current_bb != null)
+        if (current_bb == null)
         {
             // bubble ¿Ã ¿÷¥Ÿ..
             if (pos_idx.y == 0)
             {
-                out_stay_pos_idx = pos_idx;
+                out_stay_pos_idx.DeepCopy(pos_idx);
                 return true;
             }
         }
-        else
+        else               
         {
             cColsSlot<cBubble> colsSlot = GetColsSlotByID(pos_id);
             E_COLS_TYPE colsType = colsSlot.GetColsType();
