@@ -151,74 +151,51 @@ public class cBubbleSlot : cRotSlot<cBubble>{
         }
     }
 
-    //// 
-    //public bool FindStaySlot(cPoint<int> pos_id , cPoint<int> out_stay_pos_idx)
-    //{
-    //    cPoint<int> pos_idx = ID2IDX(pos_id);
+    // 
+    public bool FindStaySlot(cPoint<int> pos_id, cPoint<int> out_stay_pos_idx , List< cPoint<int> > out_stay_pos_idx_list)
+    {
+        out_stay_pos_idx_list.Clear();
 
-    //    cBubble newbb = GetBubbleByIDX(pos_idx);
-    //    if (newbb != null)
-    //    {
-    //        // bubble 이 있다..
-    //        if( pos_idx.y == 0)
-    //        {
-    //            out_stay_pos_idx = pos_idx;
-    //            return true;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        cColsSlot<cBubble> colsSlot = GetColsSlotByID(pos_id);
-    //        E_COLS_TYPE colsType = colsSlot.GetColsType();
+        cPoint<int> pos_idx = ID2IDX(pos_id);
 
-    //        List<cPoint<int>> stayPosIdxList = new List<cPoint<int>>();
+        cBubble current_bb = GetBubbleByIDX(pos_idx);
+        if (current_bb != null)
+        {
+            // bubble 이 있다..
+            if (pos_idx.y == 0)
+            {
+                out_stay_pos_idx = pos_idx;
+                return true;
+            }
+        }
+        else
+        {
+            cColsSlot<cBubble> colsSlot = GetColsSlotByID(pos_id);
+            E_COLS_TYPE colsType = colsSlot.GetColsType();
 
-    //        for( int i = 0; i < ConstData.GetChkStaySlotOffect().Count; i++ )
-    //        {
-    //            cPoint<int> new_pos_idx = new cPoint<int>(pos_idx.x + ChkOffSet[colsType][ConstData.GetChkStaySlotOffect()[i]].x,
-    //                                                pos_idx.y + ChkOffSet[colsType][ConstData.GetChkStaySlotOffect()[i]].y);
+            //List<cPoint<int>> stayPosIdxList = new List<cPoint<int>>();
 
-    //            if (new_pos_idx.y < 0)
-    //                return true;
+            foreach (E_SLOT_CHK_DIR dir in ConstData.GetChkStaySlotOffect())
+            {
+                cPoint<int> new_pos_idx = new cPoint<int>(pos_idx.x + ChkOffSet[colsType][dir].x,
+                                                    pos_idx.y + ChkOffSet[colsType][dir].y);
+                if (new_pos_idx.y < 0)
+                    continue;
 
-    //            stayPosIdxList.Add(new_pos_idx);
-    //        }
+                cBubble new_pos_bb = GetBubbleByIDX(new_pos_idx);
+                if (new_pos_bb != null)
+                    continue;
 
+                out_stay_pos_idx_list.Add(new_pos_idx);
+            }
 
-    //        foreach(E_SLOT_CHK_DIR dir in ConstData.GetChkStaySlotOffect())
-    //        {
-    //            cPoint<int> new_pos_idx = new cPoint<int>(pos_idx.x + ChkOffSet[colsType][dir].x,
-    //                                                pos_idx.y + ChkOffSet[colsType][dir].y);
-    //            if (new_pos_idx.y < 0)
-    //                return true;
-
-    //            stayPosIdxList.Add(new_pos_idx);
-    //        }
+            if (out_stay_pos_idx_list.Count > 0)
+                return true;
+        }
 
 
-
-
-    //    }
-
-
-
-    //    for (E_SLOT_CHK_DIR i = E_SLOT_CHK_DIR.UP_LEFT; i <= E_SLOT_CHK_DIR.UP_RIGHT; i++)
-    //    {
-    //        cPoint<int> new_pos = new cPoint<int>(pos.x + ChkOffSet[colsType][i].x,
-    //                                                pos.y + ChkOffSet[colsType][i].y);
-
-    //        if (new_pos.y < 0)
-    //            return true;
-
-    //        cBubble newbb = GetBubble(new_pos);
-    //        if (newbb != null)
-    //        {
-    //            return true;
-    //        }
-
-    //    }
-    //    return false;
-    //}
+        return false;
+    }
 
     public bool CheckStay(cPoint<int> pos)
     {

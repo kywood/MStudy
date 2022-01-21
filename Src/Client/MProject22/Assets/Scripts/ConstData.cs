@@ -6,10 +6,40 @@ using UnityEngine;
 
 class ConstData
 {
+    public enum E_PREFAB_TYPE
+    {
+        SLOT ,
+        COLS_SLOT ,
+        MAX
+    }
 
+
+    public class cPreFabProperty
+    {
+        public cPreFabProperty(string nm)
+        {
+            mNM = nm;
+        }
+
+        public string mNM;
+    }
+
+    private static Dictionary<E_PREFAB_TYPE, cPreFabProperty> mPreFabProperty
+        = new Dictionary<E_PREFAB_TYPE, cPreFabProperty>()
+        {
+            { E_PREFAB_TYPE.COLS_SLOT , new cPreFabProperty( "ColsSlot" ) } ,
+            { E_PREFAB_TYPE.SLOT , new cPreFabProperty( "Slot" ) }
+        };
+
+    public static cPreFabProperty GetPreFabProperty(E_PREFAB_TYPE p_type )
+    {
+        return mPreFabProperty[p_type];
+    }
 
     private static List<E_SLOT_CHK_DIR> mSlotChkDirStay = new List<E_SLOT_CHK_DIR>()
-    {   E_SLOT_CHK_DIR.LEFT ,
+    {   E_SLOT_CHK_DIR.UP_LEFT ,
+        E_SLOT_CHK_DIR.UP_RIGHT ,
+        E_SLOT_CHK_DIR.LEFT ,
         E_SLOT_CHK_DIR.RIGHT ,
         E_SLOT_CHK_DIR.DOWN_LEFT ,
         E_SLOT_CHK_DIR.DOWN_RIGHT

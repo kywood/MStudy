@@ -29,6 +29,11 @@ public class AppManager : DontDestroy<AppManager>
         return _StateManager;
     }
 
+    public GameObject GetRotSlot()
+    {
+        return RotSlot;
+    }
+
     public BubbleManager GetBubbleManager()
     {
         return BubbleManager.GetComponent<BubbleManager>();

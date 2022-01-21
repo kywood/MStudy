@@ -26,14 +26,26 @@ namespace RotSlot
     public class cSlot<T> : cID where T : class
     {
         T mItem = null;
+        cColsSlot<T> mParent;
 
-        public cSlot(int id)
+        public cSlot(cColsSlot<T> parent , int id)
             : base(id)
         {
+            mParent = parent;
         }
         public void Set(T item)
         {
             mItem = item;
+        }
+
+        public cColsSlot<T> GetParent()
+        {
+            return mParent;
+        }
+
+        public int GetParentID()
+        {
+            return mParent.GetID();
         }
 
         public T GetItem()
@@ -80,7 +92,7 @@ namespace RotSlot
 
             for (int i = 0; i < slot_nums; i++)
             {
-                mSlots.Add(new cSlot<T>(i));
+                mSlots.Add(new cSlot<T>( this , i));
             }
         }
 
@@ -215,7 +227,7 @@ namespace RotSlot
             return mRotQueue.GetCount();
         }
 
-        protected cSlot<T> GetSlotByIDX(int x, int y)
+        public cSlot<T> GetSlotByIDX(int x, int y)
         {
             return GetSlotByIDX(new cPoint<int>(x, y));
         }
@@ -227,7 +239,7 @@ namespace RotSlot
             //return colsSlot == null ? null : colsSlot.GetSlotByIDX(x);
         }
 
-        protected cSlot<T> GetSlotByIDX(cPoint<int> point)
+        public cSlot<T> GetSlotByIDX(cPoint<int> point)
         {
             cColsSlot<T> colsSlot = GetColsSlotByIDX(point);// mRotQueue.GetItemByIDX(point.y);
 

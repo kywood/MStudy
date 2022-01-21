@@ -2,6 +2,7 @@ using RotSlot;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ConstData;
 
 public class CSRotSlot : MonoBehaviour
 {
@@ -12,10 +13,11 @@ public class CSRotSlot : MonoBehaviour
 
     private cBubbleSlot mBubbleSlot;
 
-    //public cBubbleSlot GetBubbleSlot()
-    //{
-    //    return mBubbleSlot;
-    //}
+
+    public cBubbleSlot GetBubbleSlot()
+    {
+        return mBubbleSlot;
+    }
 
     public void InitRotSlot()
     {
@@ -42,12 +44,14 @@ public class CSRotSlot : MonoBehaviour
 
             CSColsSlot myColsSlot = Instantiate(PreFabColsSlot).GetComponent<CSColsSlot>();
             myColsSlot.Init(bs , colsSlot);
+            myColsSlot.gameObject.name = ConstData.GetPreFabProperty(E_PREFAB_TYPE.COLS_SLOT).mNM;
 
             myColsSlot.transform.parent = AppManager.Instance.RotSlot.transform;
 
             for (int slotIdx = 0; slotIdx < slotCount; slotIdx++)
             {
                 CSSlot mySlot = Instantiate(PreFabSlot).GetComponent<CSSlot>();
+                mySlot.name = ConstData.GetPreFabProperty(E_PREFAB_TYPE.SLOT).mNM;
 
                 mySlot.GetComponent<CircleCollider2D>().radius = Defines.G_SLOT_RADIUS;
 
