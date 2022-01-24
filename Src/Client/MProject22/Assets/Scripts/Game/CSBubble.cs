@@ -10,29 +10,42 @@ public class CSBubble : MonoBehaviour
 
     E_MOVING_STATE mMovingState = E_MOVING_STATE.STOP;
 
-
-    public void SetBubble(cBubble bubble)
+    public void SetBubbleWithPos(cBubble bubble, Vector3 pos)
     {
         mMovingState = E_MOVING_STATE.STOP;
 
         mBubble = bubble;
 
         SpriteRenderer sp = GetComponent<SpriteRenderer>();
-
         sp.sprite = AppManager.Instance.GetBubbleManager().GetSprite(bubble.GetBubbleType());
 
-        //sp.color = ConstData.GetBubbleProperty(bubble.GetBubbleType()).mColor;
-        //Color c = ConstData.GetBubbleProperty(bubble.GetBubbleType()).mColor;
+        GetComponent<Rigidbody2D>().gravityScale = 0f;
 
-
-
-        Debug.Log(bubble.GetBubbleType());
-//        Debug.Log(c.ToString());//
+        transform.position = pos;
     }
+
+    public void PangAct()
+    {
+        GetComponent<Rigidbody2D>().gravityScale = G_BUBBLE_DROP_GRAVITY_SCALE;
+        //GetComponent<Rigidbody2D>().AddForce(new Vector2(-0.01f, 0.01f));
+
+        
+        Vector2 v2 = CMath.AngleToPoint2(Random.Range(40, 140));
+
+        GetComponent<Rigidbody2D>().AddForce(v2.normalized * G_BUBBLE_FORCE_SCALE);
+
+
+    }
+
+
 
     public void SetMoving()
     {
         mMovingState = E_MOVING_STATE.MOVE;
+
+        GetComponent<Rigidbody2D>().gravityScale = G_BUBBLE_DROP_GRAVITY_SCALE;
+        //GetComponent<Rigidbody2D>().AddForce(new Vector2(-1f, 1f));
+
     }
 
     public E_MOVING_STATE GetMoving()
@@ -50,15 +63,15 @@ public class CSBubble : MonoBehaviour
         mBubble = null;
     }
 
-    public void OnUpdate()
-    {
-        if(mMovingState == E_MOVING_STATE.MOVE)
-        {
-            Vector3 cv = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            cv.y -= 0.05f;
-            transform.position = cv;
-        }
-    }
+    //public void OnUpdate()
+    //{
+    //    //if (mMovingState == E_MOVING_STATE.MOVE)
+    //    //{
+    //    //    Vector3 cv = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+    //    //    cv.y -= G_BUBBLE_MOVING_SPEED * Time.deltaTime;
+    //    //    transform.position = cv;
+    //    //}
+    //}
 
     public void SetActive( bool active )
     {

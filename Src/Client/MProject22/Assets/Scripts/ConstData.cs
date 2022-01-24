@@ -45,7 +45,7 @@ class ConstData
         E_SLOT_CHK_DIR.DOWN_RIGHT
     };
 
-    public static List<E_SLOT_CHK_DIR> GetChkStaySlotOffect()
+    public static List<E_SLOT_CHK_DIR> GetChkStaySlotOffset()
     {
         return mSlotChkDirStay;
     }

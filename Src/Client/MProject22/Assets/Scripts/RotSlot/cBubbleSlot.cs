@@ -175,7 +175,7 @@ public class cBubbleSlot : cRotSlot<cBubble>{
 
             //List<cPoint<int>> stayPosIdxList = new List<cPoint<int>>();
 
-            foreach (E_SLOT_CHK_DIR dir in ConstData.GetChkStaySlotOffect())
+            foreach (E_SLOT_CHK_DIR dir in ConstData.GetChkStaySlotOffset())
             {
                 cPoint<int> new_pos_idx = new cPoint<int>(pos_idx.x + ChkOffSet[colsType][dir].x,
                                                     pos_idx.y + ChkOffSet[colsType][dir].y);

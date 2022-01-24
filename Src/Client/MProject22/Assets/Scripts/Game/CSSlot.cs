@@ -27,11 +27,11 @@ public class CSSlot : MonoBehaviour
     public bool EqCSlot(cSlot<cBubble> cslot )
     {
 
-        Debug.Log("mSlot.GetParentID()" + mSlot.GetParentID());
-        Debug.Log("cslot.GetParentID()" + cslot.GetParentID());
+        //Debug.Log("mSlot.GetParentID()" + mSlot.GetParentID());
+        //Debug.Log("cslot.GetParentID()" + cslot.GetParentID());
 
-        Debug.Log("mSlot.GetID()" + mSlot.GetID());
-        Debug.Log("cslot.GetID()" + cslot.GetID());
+        //Debug.Log("mSlot.GetID()" + mSlot.GetID());
+        //Debug.Log("cslot.GetID()" + cslot.GetID());
 
         if ( mSlot.GetParentID() == cslot.GetParentID() &&
             mSlot.GetID() == cslot.GetID() )

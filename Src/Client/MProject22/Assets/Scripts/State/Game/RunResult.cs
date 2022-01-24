@@ -18,12 +18,12 @@ public class RunResult : State
     {
         if (out_pang.Count > 0)
         {
-            Debug.Log(" =======  out_pang BEGIN ============== ");
-            foreach (cBubble bb in out_pang)
-            {
-                Debug.Log(bb.ToString());
-            }
-            Debug.Log(" =======  out_pang END ============== ");
+            //Debug.Log(" =======  out_pang BEGIN ============== ");
+            //foreach (cBubble bb in out_pang)
+            //{
+            //    Debug.Log(bb.ToString());
+            //}
+            //Debug.Log(" =======  out_pang END ============== ");
 
             Pool pool = ResPools.Instance.GetPool(MDefine.eResType.Bubble);
 
@@ -38,7 +38,8 @@ public class RunResult : State
                 {
                     if (csBubble.IsEqBubble(bb))
                     {
-                        pool.ResList[k].SetActive(false);
+                        csBubble.PangAct();
+
                     }
                     //Debug.Log(bb.ToString());
                 }
@@ -50,12 +51,12 @@ public class RunResult : State
     {
         if (out_drop.Count > 0)
         {
-            Debug.Log(" =======  out_drop BEGIN ============== ");
-            foreach (cBubble bb in out_drop)
-            {
-                Debug.Log(bb.ToString());
-            }
-            Debug.Log(" =======  out_drop END ============== ");
+            //Debug.Log(" =======  out_drop BEGIN ============== ");
+            //foreach (cBubble bb in out_drop)
+            //{
+            //    Debug.Log(bb.ToString());
+            //}
+            //Debug.Log(" =======  out_drop END ============== ");
 
             Pool pool = ResPools.Instance.GetPool(MDefine.eResType.Bubble);
 

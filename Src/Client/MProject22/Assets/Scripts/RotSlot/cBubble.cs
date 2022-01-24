@@ -63,7 +63,7 @@ namespace RotSlot
             mType = type;
             mID = id;
 
-            Debug.Log("===" + mType + " ========== ");
+            //Debug.Log("===" + mType + " ========== ");
         }
 
         //HACK

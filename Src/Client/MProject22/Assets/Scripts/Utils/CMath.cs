@@ -75,8 +75,13 @@ public static class CMath
     //    return RetAngle;
     //}
 
-    public static Vector2 AngleToPoint(float Angle)
+    public static Vector2 AngleToPoint2(float Angle)
     {
         return new Vector2(Mathf.Cos(Angle) * Mathf.Deg2Rad , Mathf.Sin(Angle) * Mathf.Deg2Rad);
+    }
+
+    public static Vector3 AngleToPoint3(float Angle)
+    {
+        return new Vector3(Mathf.Cos(Angle) * Mathf.Deg2Rad, Mathf.Sin(Angle) * Mathf.Deg2Rad , 0f);
     }
 }

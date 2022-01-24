@@ -49,6 +49,10 @@ public class Defines
 
     public const int G_BUBBLE_PANG_COUNT = 3;
 
+    public const float G_BUBBLE_DROP_GRAVITY_SCALE = 1f;
+    public const float G_BUBBLE_FORCE_SCALE = 0.01f;
+
+    //public const float G_BUBBLE_MOVING_SPEED = 5.0f;
 
     public const int G_BUBBLE_ROW_COUNT = 12;
     public const int G_BUBBLE_COL_COUNT = 8;

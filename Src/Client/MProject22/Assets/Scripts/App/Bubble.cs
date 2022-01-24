@@ -143,9 +143,15 @@ public class Bubble : MonoBehaviour
 
                 foreach ( cPoint<int> cpos in out_stay_pos_idx_list)
                 {
-                    Debug.Log("cpos : " + cpos.ToString());
+                    
 
                     cSlot<cBubble> cSlotTmp = bubbleSlot.GetSlotByIDX(cpos);
+
+                    if (cSlotTmp == null)
+                        continue;
+
+                    Debug.Log("cpos : " + cpos.ToString() );
+                    Debug.Log("cSlotTmp: " + cSlotTmp.ToString());
 
                     //cSlot 으로 실제 GameObject slot 를 찾는다.
                     CSSlot CsSlotTmp = csRotSlot.GetCSSclot(cSlotTmp);
@@ -178,12 +184,11 @@ public class Bubble : MonoBehaviour
             GameObject BubbleGO = pool.GetAbleObject();
 
             CSBubble cb = BubbleGO.GetComponent<CSBubble>();
-            cb.SetBubble(bb);
-
+            cb.SetBubbleWithPos(bb , finalCsSlot.transform.position);
 
             //HACK
             //cb.transform.localScale = new Vector3(Defines.G_SLOT_RADIUS * 2, Defines.G_SLOT_RADIUS * 2, 0.0f);
-            cb.transform.position = finalCsSlot.transform.position;
+//            cb.transform.position = finalCsSlot.transform.position;
 
 
             //HACK 

@@ -37,7 +37,7 @@ public class State
             if (pool.ResList[k].activeSelf == false)
                 continue;
 
-            (pool.ResList[k].GetComponent<CSBubble>()).OnUpdate();
+        //    (pool.ResList[k].GetComponent<CSBubble>()).OnUpdate();
         }
 
     }
