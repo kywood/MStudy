@@ -63,18 +63,31 @@ public class Bubble : MonoBehaviour
     }
 
 
+    private CSSlot FindNearPos(List<CSSlot> csslots)
+    {
+
+        csslots.Sort((cs1, cs2) =>
+        {
+            float dis_c1= Vector3.Distance(transform.position, cs1.transform.position);
+            float dis_c2 = Vector3.Distance(transform.position, cs2.transform.position);
+
+            //if (dis_c1 > dis_c2)
+            if (dis_c1 < dis_c2)
+                return -1;
+
+            return 1;
+
+        });
+
+        return csslots[0];
+
+    }
+
+
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.name.CompareTo(Defines.E_WALL_NM.WB.ToString()) == 0)
-        //{
-        //    //Debug.Log(collision.gameObject.name);
-        //    AppManager.Instance.GetStateManager().SetGameState(StateManager.E_GAME_STATE.SHOOT_READY);
-        //}
-
-        //Debug.Log("T:" + collision.name);
-
         
-
 
         if (AppManager.Instance.GetStateManager().IsGameState(StateManager.E_GAME_STATE.RUN) == false)
         {
@@ -103,30 +116,56 @@ public class Bubble : MonoBehaviour
             ) == true)
         {
 
+            CSRotSlot csRotSlot = AppManager.Instance.GetRotSlot().GetComponent<CSRotSlot>();
+            cBubbleSlot bubbleSlot = csRotSlot.GetBubbleSlot();
+
+            CSSlot finalCsSlot;
+
             if (out_stay_pos_idx_list.Count <= 0)
             {
                 stay_idx = out_top_stay_pos_idx;
+
+
+                cSlot<cBubble> cSlotTmp = bubbleSlot.GetSlotByIDX(out_top_stay_pos_idx);
+
+                //cSlot 으로 실제 GameObject slot 를 찾는다.
+                finalCsSlot = csRotSlot.GetCSSclot(cSlotTmp);
+
             }
             else
             {
                 // 나온 결과 로  sort 해서 1등 뽑기..
                 // collision --> out_stay_pos_idx_list  == > distance 1 등인거
                 //out_stay_pos_idx_list
+                //Debug.Log("aAAAAAAAAAAAAAAAAAAAAAAAAA");
+
+                List<CSSlot> csSlotLists = new List<CSSlot>();
+
+                foreach ( cPoint<int> cpos in out_stay_pos_idx_list)
+                {
+                    Debug.Log("cpos : " + cpos.ToString());
+
+                    cSlot<cBubble> cSlotTmp = bubbleSlot.GetSlotByIDX(cpos);
+
+                    //cSlot 으로 실제 GameObject slot 를 찾는다.
+                    CSSlot CsSlotTmp = csRotSlot.GetCSSclot(cSlotTmp);
+
+                    csSlotLists.Add(CsSlotTmp);
+                }
+
+                finalCsSlot = FindNearPos(csSlotLists);
+
             }
 
-            CSRotSlot csRotSlot = AppManager.Instance.GetRotSlot().GetComponent<CSRotSlot>();
-            cBubbleSlot bubbleSlot = csRotSlot.GetBubbleSlot();
+            //CSRotSlot csRotSlot = AppManager.Instance.GetRotSlot().GetComponent<CSRotSlot>();
+            //cBubbleSlot bubbleSlot = csRotSlot.GetBubbleSlot();
 
-            cSlot<cBubble> cSlot = bubbleSlot.GetSlotByIDX(stay_idx);
-
-            //cSlot 으로 실제 GameObject slot 를 찾는다.
-            CSSlot finalCsSlot = csRotSlot.GetCSSclot(cSlot);
 
             BubbleManager bubbleManager = AppManager.Instance.BubbleManager.GetComponent<BubbleManager>();
-
             bubbleManager.SetVisible(false);
-
             Bubble bubble = bubbleManager.GetBubble();
+
+            cSlot<cBubble> cSlot = finalCsSlot.GetcSlot();
 
             //AppManager.Instance.BubbleManager.GetComponent<BubbleManager>().SetVisible(false);
             Debug.Log(collision.name + " " + cSlot.GetParentID() + " " + cSlot.GetID());
