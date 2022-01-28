@@ -18,18 +18,22 @@ public class Logo : MonoBehaviour
     }
 
 
-    void Update()
-    {
-        // Debug.Log("Update");
-        //if( 0.1 ÃÊ°¡ Áö³µ³ª>??? )
+    //void Update()
+    //{
+    //    while(true)
+    //    {
+
+    //    }
+    ////    // Debug.Log("Update");
+    ////    //if( 0.1 ÃÊ°¡ Áö³µ³ª>??? )
 
 
-        //LogoText.lineSpacing += 0.06f;
-        //if(LogoText.lineSpacing > 0.68 )
-        //{
-        //    Application.LoadLevel("Test");
-        //}
-    }
+    ////    //LogoText.lineSpacing += 0.06f;
+    ////    //if(LogoText.lineSpacing > 0.68 )
+    ////    //{
+    ////    //    Application.LoadLevel("Test");
+    ////    //}
+    //}
 
     IEnumerator RunFadeOut()
     {
@@ -47,4 +51,19 @@ public class Logo : MonoBehaviour
 
         yield return null;
     }
+
+    //int func()
+    //{
+    //    int a = 0;
+
+    //    if (a == 0)
+    //        return 0;
+    //    else if( a== 1)
+    //    {
+    //        return 1;
+    //    }
+
+    //    return 100;
+
+    //}
 }

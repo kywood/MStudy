@@ -63,15 +63,22 @@ public class CSBubble : MonoBehaviour
         mBubble = null;
     }
 
-    //public void OnUpdate()
-    //{
-    //    //if (mMovingState == E_MOVING_STATE.MOVE)
-    //    //{
-    //    //    Vector3 cv = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-    //    //    cv.y -= G_BUBBLE_MOVING_SPEED * Time.deltaTime;
-    //    //    transform.position = cv;
-    //    //}
-    //}
+    public void Update()
+    {
+        if( transform.position.y < AppManager.Instance.Walls.GetComponent<Walls>().WB.transform.position.y )
+        {
+            SetActive(false);
+        }
+
+        //AppManager.Instance.Walls.GetComponent<Walls>().WB.transform.y
+
+        //if (mMovingState == E_MOVING_STATE.MOVE)
+        //{
+        ////    Vector3 cv = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        ////    cv.y -= G_BUBBLE_MOVING_SPEED * Time.deltaTime;
+        ////    transform.position = cv;
+        //}
+    }
 
     public void SetActive( bool active )
     {
