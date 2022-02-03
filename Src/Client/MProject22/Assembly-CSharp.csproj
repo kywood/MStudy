@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Scripts\State\Logo\Title.cs" />
+    <Compile Include="Assets\Scripts\State\Logo\Menu.cs" />
     <Compile Include="Assets\Scripts\State\Game\ShootReady.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
@@ -77,10 +78,11 @@
     <Compile Include="Assets\Scripts\Game\CSSlot.cs" />
     <Compile Include="Assets\Scripts\Game\CSColsSlot.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
-    <Compile Include="Assets\Scripts\App\Pick.cs" />
+    <Compile Include="Assets\Scripts\State\Game\UI\Pick.cs" />
     <Compile Include="Assets\Scripts\Defines.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\Scripts\App\Apps.cs" />
+    <Compile Include="Assets\Scripts\State\Game\GameManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\Utils\MeshSortLayer.cs" />
     <Compile Include="Assets\Scripts\Utils\CString.cs" />
@@ -109,12 +111,14 @@
     <Compile Include="Assets\Scripts\Utils\ParticleAutoDestroy.cs" />
     <Compile Include="Assets\Scripts\RotSlot\cBubble.cs" />
     <Compile Include="Assets\Scripts\App\AppManager.cs" />
+    <Compile Include="Assets\Scripts\State\Game\UI\Bar.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Scripts\Test\T15.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\Test\T17.cs" />
+    <Compile Include="Assets\Scripts\ConstData.cs" />
     <Compile Include="Assets\Scripts\State\Game\End.cs" />
     <Compile Include="Assets\Scripts\Utils\ParticleScaler.cs" />
     <Compile Include="Assets\Scripts\RotSlot\cRotSlot.cs" />
@@ -128,6 +132,7 @@
     <Compile Include="Assets\Scripts\RotSlot\cRotQueue.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\State\Game\Ready.cs" />
+    <Compile Include="Assets\Scripts\State\Game\GameStateManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\Scripts\Utils\CMath.cs" />
@@ -148,7 +153,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scripts\Utils\CBezier.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-    <Compile Include="Assets\Scripts\ConstData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
