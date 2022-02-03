@@ -120,7 +120,7 @@ public class RunResult : State
 
         if( ResPools.Instance.IsStopAllBubble() )
         {
-            AppManager.Instance.GetStateManager().SetGameState(StateManager.E_GAME_STATE.SHOOT_READY);
+            GameManager.Instance.GetGameStateManager().SetGameState(GameStateManager.E_GAME_STATE.SHOOT_READY);
         }
 
         //Pool pool = ResPools.Instance.GetPool(MDefine.eResType.Bubble);

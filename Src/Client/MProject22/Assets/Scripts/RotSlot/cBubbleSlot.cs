@@ -65,11 +65,22 @@ public class cBubbleSlot : cRotSlot<cBubble>{
 
     private bool ChkDropStartBubbleByIDX(cPoint<int> pos, cColsSlot<cBubble> cols_slot, cBubble bb)
     {
+        List<E_SLOT_CHK_DIR> chkList = new List<E_SLOT_CHK_DIR>()
+        { 
+            E_SLOT_CHK_DIR.LEFT ,
+            E_SLOT_CHK_DIR.RIGHT ,
+            E_SLOT_CHK_DIR.UP_LEFT ,
+            E_SLOT_CHK_DIR.UP_RIGHT 
+        };
+
+
         // HACK 수정해야함.....
-        for (int i = (int)E_SLOT_CHK_DIR.LEFT; i <= (int)E_SLOT_CHK_DIR.UP_RIGHT; i++)
+        //for (int i = (int)E_SLOT_CHK_DIR.LEFT; i <= (int)E_SLOT_CHK_DIR.UP_RIGHT; i++)
+
+        foreach(E_SLOT_CHK_DIR chkDir in chkList )
         {
-            cPoint<int> new_pos = new cPoint<int>(pos.x + ChkOffSet[cols_slot.GetColsType()][(E_SLOT_CHK_DIR)i].x,
-                                    pos.y + ChkOffSet[cols_slot.GetColsType()][(E_SLOT_CHK_DIR)i].y);
+            cPoint<int> new_pos = new cPoint<int>(pos.x + ChkOffSet[cols_slot.GetColsType()][chkDir].x,
+                                    pos.y + ChkOffSet[cols_slot.GetColsType()][chkDir].y);
 
             cBubble newbb = GetBubbleByIDX(new_pos);
 
@@ -105,11 +116,11 @@ public class cBubbleSlot : cRotSlot<cBubble>{
             }
         }
 
-        QueueAct(cq, (cq, stBubble, new_pos) => {
+        QueueAct(cq, (tcq, stBubble, new_pos) => {
             cBubble newbb = GetBubbleByIDX(new_pos);
             if (newbb != null)
             {
-                cq.Add(new_pos);
+                tcq.Add(new_pos);
             }
         } , out_drop);
     }
@@ -136,7 +147,7 @@ public class cBubbleSlot : cRotSlot<cBubble>{
                 act.Invoke(cq, stBubble, new_pos);
             }
 
-            Console.WriteLine("RESULT POS = {0} , {1}", calcTarget.x, calcTarget.y);
+            //Console.WriteLine("RESULT POS = {0} , {1}", calcTarget.x, calcTarget.y);
 
             if( out_list != null )
             {
@@ -255,6 +266,55 @@ public class cBubbleSlot : cRotSlot<cBubble>{
     //}
 
 
+    void DropBubble(List<cBubble> out_drop)
+    {
+        cCalcQueue cq = new cCalcQueue();
+
+        cColsSlot<cBubble> colsSlot = GetColsSlotByIDX(0);
+
+        for (int i = 0; i < colsSlot.GetCount(); i++)
+        {
+            if (GetBubbleByIDX(new cPoint<int>(i, 0)) == null)
+                continue;
+
+            cq.Add(new cPoint<int>(i, 0));
+            
+            QueueAct(cq,
+            (tcq, stBubble, new_pos) => {
+
+                cBubble newbb = GetBubbleByIDX(new_pos);
+                if (newbb != null)
+                {
+                    tcq.Add(new_pos);
+                }
+            });
+        }
+
+        for( int colsSlotIdx = 1 ; colsSlotIdx < GetColsSlotCount(); colsSlotIdx++ )
+        {
+            colsSlot = GetColsSlotByIDX(colsSlotIdx);
+
+            for( int slotIdx = 0; slotIdx < colsSlot.GetCount(); slotIdx++)
+            {
+                cBubble bb = colsSlot.GetItemByIDX(slotIdx);
+
+                if (bb == null)
+                    continue;
+
+                cPoint<int> pt = new cPoint<int>(slotIdx, colsSlotIdx);
+
+                if ( cq.IsContain( pt ) )
+                {
+                    continue;
+                }
+
+                out_drop.Add(bb);
+                SetItemByIDX(pt);
+            }
+        }       
+
+    }
+
     public void PangByID(cPoint<int> pos , List<cBubble > out_pang , List<cBubble> out_drop)
     {
         //HACK
@@ -298,9 +358,11 @@ public class cBubbleSlot : cRotSlot<cBubble>{
                 }
             }
         }
-
+         
         // 연결이 끊어진 구슬 떨구기 
-        GetFindDropBubble(out_drop);
+
+        DropBubble(out_drop);
+        //GetFindDropBubble(out_drop);
 
         //int k = 0;
         //k = 100;

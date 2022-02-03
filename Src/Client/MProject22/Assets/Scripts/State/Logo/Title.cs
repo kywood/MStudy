@@ -21,7 +21,7 @@ public class Title : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
 
-        Application.LoadLevel(Defines.GetScenesName(Defines.E_SCENES.GAME) );
+        Application.LoadLevel(Defines.GetScenesName(Defines.E_SCENES.MENU) );
 
         yield return null;
     }

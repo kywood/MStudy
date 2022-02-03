@@ -3,52 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateManager : MonoBehaviour
+public class StateManager 
 {
-    // Start is called before the first frame update
-    public enum E_GAME_STATE
+    protected Dictionary<int, State> mStateMap;// = new Dictionary<int, State>();
+
+
+    public static readonly int NONE = -1;
+
+    protected int mState = -1;
+
+    public void SetState( int state , Action<State> act = null )
     {
-        NONE , 
-        READY,  // ready 
-        SHOOT_READY ,
-        RUN,
-        RUN_RESULT,
-        END,
-
-        MAX
-    }
-
-    private Dictionary<E_GAME_STATE, State> mStateMap = new Dictionary<E_GAME_STATE, State>()
-    {   
-        {E_GAME_STATE.READY , new Ready() }   ,
-        {E_GAME_STATE.SHOOT_READY , new ShootReady() }   ,
-        {E_GAME_STATE.RUN , new Run() }   ,
-        {E_GAME_STATE.RUN_RESULT , new RunResult() }   ,
-        {E_GAME_STATE.END , new End() }   
-    };
-
-
-    private E_GAME_STATE mGameState = E_GAME_STATE.NONE;
-
-    void Start()
-    {
-        
-    }
-    public void SetGameState(E_GAME_STATE gameState , Action<State> act = null )
-    {
-        if (mGameState == gameState)
+        if (mState == state)
             return;
 
-        if (mGameState == E_GAME_STATE.NONE)
+        if (mState == NONE)
         {
-            mGameState = gameState;
-            mStateMap[gameState].OnEnter(act);
+            mState = state;
+            mStateMap[state].OnEnter(act);
         }
         else
         {
-            mStateMap[mGameState].OnLeave();
-            mGameState = gameState;
-            mStateMap[gameState].OnEnter(act);
+            mStateMap[mState].OnLeave();
+            mState = state;
+            mStateMap[state].OnEnter(act);
         }
     }
 
@@ -72,19 +50,19 @@ public class StateManager : MonoBehaviour
     //    }
     //}
 
-    public E_GAME_STATE GetGameState()
+    public int GetState()
     {
-        return mGameState;
+        return mState;
     }
 
-    public State GetGameStateValue()
+    public State GetStateValue()
     {
-        return mStateMap[mGameState];
+        return mStateMap[mState];
     }
 
-    public bool IsGameState(E_GAME_STATE game_state  )
+    public bool IsState(int game_state  )
     {
-        if (mGameState == game_state)
+        if (mState == game_state)
             return true;
 
         return false;
@@ -92,10 +70,10 @@ public class StateManager : MonoBehaviour
 
     public void OnUpdate()
     {
-        if (mGameState == E_GAME_STATE.NONE)
+        if (mState == NONE)
             return;
 
-        mStateMap[mGameState].OnUpdate();
+        mStateMap[mState].OnUpdate();
     }
 
 }

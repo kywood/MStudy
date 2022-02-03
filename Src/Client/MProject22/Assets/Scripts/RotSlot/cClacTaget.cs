@@ -61,7 +61,7 @@ namespace RotSlot
     class cCalcQueue
     {
         Dictionary< int , cCalcTarget> mCalcQueue = new Dictionary<int  , cCalcTarget>();
-        private bool IsContain( cPoint<int> pos  )
+        public bool IsContain( cPoint<int> pos  )
         {
             foreach( int k in mCalcQueue.Keys )
             {

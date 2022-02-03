@@ -34,5 +34,17 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : SingletonMonoBe
     {
     }
 
+    virtual protected void OnUpdate()
+    {
+    }
+
+    private void Update()
+    {
+        if (Instance == (T)this)
+        {
+            OnUpdate();
+        }
+    }
+
 }
 

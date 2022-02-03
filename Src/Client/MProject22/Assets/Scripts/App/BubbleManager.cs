@@ -41,10 +41,25 @@ public class BubbleManager : MonoBehaviour
         return Bubble.GetComponent<Bubble>();
     }
 
-    public E_BUBBLE_TYPE GetNextBubbleType()
-    {
-        return (E_BUBBLE_TYPE)Random.Range((int)E_BUBBLE_TYPE.NONE + 1, (int)E_BUBBLE_TYPE.MAX - 1);
-    }
+    //public E_BUBBLE_TYPE GetNextBubbleType()
+    //{
+    //    //RED = 1,
+    //    //BLUE = 2,
+    //    //YELLOW = 3,
+    //    //GREEN = 4,
+    //    //PURPLE = 5,
+
+    //    List<int> ballTypeLists = new List<int>()
+    //    {
+    //        (int)E_BUBBLE_TYPE.RED ,
+    //        (int)E_BUBBLE_TYPE.BLUE ,
+    //        (int)E_BUBBLE_TYPE.YELLOW ,
+    //        (int)E_BUBBLE_TYPE.GREEN ,
+    //        (int)E_BUBBLE_TYPE.PURPLE ,
+    //    };
+
+    //    return (E_BUBBLE_TYPE)Random.Range( ballTypeLists[0] , ballTypeLists[ballTypeLists.Count]);
+    //}
 
 
 }

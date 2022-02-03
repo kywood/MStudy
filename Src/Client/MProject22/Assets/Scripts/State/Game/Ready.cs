@@ -72,12 +72,12 @@ public class Ready : State
 
         //AppManager.Instance.GetComponent<CSRotSlot>().InitRotSlot();
 
-        (AppManager.Instance.RotSlot.GetComponent<CSRotSlot>()).InitRotSlot();
+        (GameManager.Instance.RotSlot.GetComponent<CSRotSlot>()).InitRotSlot();
 
         //MakeCollitionBubble();
-        AppManager.Instance.Pick.SetActive(true);
+        GameManager.Instance.Pick.SetActive(true);
 
-        AppManager.Instance.GetStateManager().SetGameState(StateManager.E_GAME_STATE.SHOOT_READY);
+        GameManager.Instance.GetGameStateManager().SetGameState(GameStateManager.E_GAME_STATE.SHOOT_READY);
     }
 
     public override void OnLeave()

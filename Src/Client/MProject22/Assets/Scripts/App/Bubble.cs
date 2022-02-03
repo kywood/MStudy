@@ -30,7 +30,7 @@ public class Bubble : MonoBehaviour
 
         SpriteRenderer sp = GetComponent<SpriteRenderer>();
 
-        sp.sprite = AppManager.Instance.GetBubbleManager().GetSprite(bubble_type);
+        sp.sprite = GameManager.Instance.GetBubbleManager().GetSprite(bubble_type);
 
         //Color c = ConstData.GetBubbleProperty(bubble_type).mColor;
         //sp.color = ConstData.GetBubbleProperty(bubble_type).mColor;
@@ -53,7 +53,7 @@ public class Bubble : MonoBehaviour
         gameObject.SetActive(value);
         if( value == true )
         {
-            Pick pick =AppManager.Instance.Pick.GetComponent<Pick>();
+            Pick pick = GameManager.Instance.Pick.GetComponent<Pick>();
 
             transform.position = pick.ShootBody.transform.position;
 
@@ -89,7 +89,7 @@ public class Bubble : MonoBehaviour
     {
         
 
-        if (AppManager.Instance.GetStateManager().IsGameState(StateManager.E_GAME_STATE.RUN) == false)
+        if (GameManager.Instance.GetGameStateManager().IsGameState(GameStateManager.E_GAME_STATE.RUN) == false)
         {
             return;
         }
@@ -116,7 +116,7 @@ public class Bubble : MonoBehaviour
             ) == true)
         {
 
-            CSRotSlot csRotSlot = AppManager.Instance.GetRotSlot().GetComponent<CSRotSlot>();
+            CSRotSlot csRotSlot = GameManager.Instance.GetRotSlot().GetComponent<CSRotSlot>();
             cBubbleSlot bubbleSlot = csRotSlot.GetBubbleSlot();
 
             CSSlot finalCsSlot;
@@ -167,7 +167,7 @@ public class Bubble : MonoBehaviour
             //cBubbleSlot bubbleSlot = csRotSlot.GetBubbleSlot();
 
 
-            BubbleManager bubbleManager = AppManager.Instance.BubbleManager.GetComponent<BubbleManager>();
+            BubbleManager bubbleManager = GameManager.Instance.BubbleManager.GetComponent<BubbleManager>();
             bubbleManager.SetVisible(false);
             Bubble bubble = bubbleManager.GetBubble();
 
@@ -188,12 +188,12 @@ public class Bubble : MonoBehaviour
 
             //HACK
             //cb.transform.localScale = new Vector3(Defines.G_SLOT_RADIUS * 2, Defines.G_SLOT_RADIUS * 2, 0.0f);
-//            cb.transform.position = finalCsSlot.transform.position;
+            //            cb.transform.position = finalCsSlot.transform.position;
 
 
             //HACK 
             //무형 함수
-            AppManager.Instance.GetStateManager().SetGameState(StateManager.E_GAME_STATE.RUN_RESULT,
+            GameManager.Instance.GetGameStateManager().SetGameState(GameStateManager.E_GAME_STATE.RUN_RESULT,
                 (State state) =>
                 {
                     ((RunResult)state).SetCsSlot(finalCsSlot);
@@ -210,7 +210,7 @@ public class Bubble : MonoBehaviour
         if (collision.gameObject.name.CompareTo(Defines.E_WALL_NM.WB.ToString()) == 0)
         {
             //Debug.Log(collision.gameObject.name);
-            AppManager.Instance.GetStateManager().SetGameState(StateManager.E_GAME_STATE.SHOOT_READY);
+            GameManager.Instance.GetGameStateManager().SetGameState(GameStateManager.E_GAME_STATE.SHOOT_READY);
         }
 
 

@@ -51,7 +51,7 @@ public class CSRotSlot : MonoBehaviour
         float startX = 0.0f;
         float startY = 0.0f;
 
-        Walls walls = AppManager.Instance.Walls.GetComponent<Walls>();
+        Walls walls = GameManager.Instance.Walls.GetComponent<Walls>();
 
         float firstX = 0.0f;
         float firstEndX = 0.0f;        
@@ -66,7 +66,7 @@ public class CSRotSlot : MonoBehaviour
             myColsSlot.Init(bs , colsSlot);
             myColsSlot.gameObject.name = ConstData.GetPreFabProperty(E_PREFAB_TYPE.COLS_SLOT).mNM;
 
-            myColsSlot.transform.parent = AppManager.Instance.RotSlot.transform;
+            myColsSlot.transform.parent = GameManager.Instance.RotSlot.transform;
 
             for (int slotIdx = 0; slotIdx < slotCount; slotIdx++)
             {

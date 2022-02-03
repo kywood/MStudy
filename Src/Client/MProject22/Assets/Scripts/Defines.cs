@@ -20,15 +20,16 @@ public class Defines
     {
         LOGO,
         TITLE,
-        TEST,
-        GAME
+        MENU ,
+        GAME ,
+        MAX
     }
 
     private static Dictionary<E_SCENES, String> mScenesNms = new Dictionary<E_SCENES, string>()
         {
             { E_SCENES.LOGO , "LOGO" } ,
             { E_SCENES.TITLE , "TITLE" },
-            { E_SCENES.TEST , "TEST" },
+            { E_SCENES.MENU , "MENU" },
             { E_SCENES.GAME , "GAME" },
         };
 
@@ -49,8 +50,11 @@ public class Defines
 
     public const int G_BUBBLE_PANG_COUNT = 3;
 
-    public const float G_BUBBLE_DROP_GRAVITY_SCALE = 1f;
-    public const float G_BUBBLE_FORCE_SCALE = 0.01f;
+    public const float G_BUBBLE_DROP_GRAVITY_SCALE = 1.5f;
+    public const float G_BUBBLE_FORCE_SCALE = 0.02f;
+    public const float G_SHOOT_FORCE = 15.0f;
+
+    
 
     //public const float G_BUBBLE_MOVING_SPEED = 5.0f;
 

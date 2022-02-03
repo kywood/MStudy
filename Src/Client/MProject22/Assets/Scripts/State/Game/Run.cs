@@ -13,7 +13,7 @@ public class Run : State
 
     public override void OnLeave()
     {
-        AppManager.Instance.BubbleManager.GetComponent<BubbleManager>().SetVisible(false);
+        GameManager.Instance.BubbleManager.GetComponent<BubbleManager>().SetVisible(false);
         //Debug.Log("Run OnLeave");
 
     }

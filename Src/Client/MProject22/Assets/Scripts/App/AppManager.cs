@@ -5,17 +5,11 @@ using UnityEngine;
 
 public class AppManager : DontDestroy<AppManager>
 {
-    StateManager _StateManager = null;
-
-    public GameObject Pick;
-    public GameObject BubbleManager;
-    public GameObject Walls;
-    
-    public GameObject RotSlot;
     
 
 
-    public float ShootForce = 10.0f;
+
+    
 
 
     override protected void OnAwake()
@@ -24,30 +18,15 @@ public class AppManager : DontDestroy<AppManager>
         Application.targetFrameRate = 60;
     }
 
-    public StateManager GetStateManager()
-    {
-        return _StateManager;
-    }
-
-    public GameObject GetRotSlot()
-    {
-        return RotSlot;
-    }
-
-    public BubbleManager GetBubbleManager()
-    {
-        return BubbleManager.GetComponent<BubbleManager>();
-    }
-
+    
     override protected void OnStart()
     {
         base.OnStart();
 
-        _StateManager = GetComponent<StateManager>();
         //HACK 20200812
         Debug.Log(Application.persistentDataPath);
 
-        _StateManager.SetGameState(StateManager.E_GAME_STATE.READY);
+        
 
         //cBubbleSlot bs = new cBubbleSlot();
 
@@ -66,6 +45,6 @@ public class AppManager : DontDestroy<AppManager>
     {
         base.OnUpdate();
 
-        _StateManager.OnUpdate();
+        
     }
 }

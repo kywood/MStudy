@@ -110,6 +110,19 @@ namespace RotSlot
             //return E_COLS_TYPE.ODD;
         }
 
+        public T GetItemByIDX(int slot_idx)
+        {
+            cSlot<T> slot = GetSlotByIDX( slot_idx);
+
+            if( slot == null )
+            {
+                return null;
+            }
+
+            return slot.GetItem();
+
+        }
+
         public cSlot<T> GetSlotByIDX(int slot_idx)
         {
             if( slot_idx < 0 || 

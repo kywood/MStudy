@@ -17,7 +17,7 @@ public class CSBubble : MonoBehaviour
         mBubble = bubble;
 
         SpriteRenderer sp = GetComponent<SpriteRenderer>();
-        sp.sprite = AppManager.Instance.GetBubbleManager().GetSprite(bubble.GetBubbleType());
+        sp.sprite = GameManager.Instance.GetBubbleManager().GetSprite(bubble.GetBubbleType());
 
         GetComponent<Rigidbody2D>().gravityScale = 0f;
 
@@ -65,7 +65,7 @@ public class CSBubble : MonoBehaviour
 
     public void Update()
     {
-        if( transform.position.y < AppManager.Instance.Walls.GetComponent<Walls>().WB.transform.position.y )
+        if( transform.position.y < GameManager.Instance.Walls.GetComponent<Walls>().WB.transform.position.y )
         {
             SetActive(false);
         }
